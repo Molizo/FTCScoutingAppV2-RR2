@@ -6,13 +6,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FTCScoutingAppV2.Models
 {
+    public enum MatchTypes
+    {
+        Qualification, Elimination
+    }
+
     public class Match
     {
         [Key]
         public int ID { get;set;}
         
         [Display(Name ="Match type")]
-        public string matchType { get;set;}
+        public MatchTypes? matchType { get;set;}
         [Display(Name ="Match number")]
         public string matchNumber { get;set;}
     }
