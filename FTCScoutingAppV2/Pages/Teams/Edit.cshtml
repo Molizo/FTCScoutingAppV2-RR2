@@ -1,0 +1,50 @@
+﻿@page
+@model FTCScoutingAppV2.Pages.Teams.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Team.ID" />
+            <div class="form-group">
+                <label asp-for="Team.teamID" class="control-label"></label>
+                <input asp-for="Team.teamID" class="form-control" />
+                <span asp-validation-for="Team.teamID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.teamName" class="control-label"></label>
+                <input asp-for="Team.teamName" class="form-control" />
+                <span asp-validation-for="Team.teamName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.teamLocation" class="control-label"></label>
+                <input asp-for="Team.teamLocation" class="form-control" />
+                <span asp-validation-for="Team.teamLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.comments" class="control-label"></label>
+                <textarea asp-for="Team.comments" class="form-control"></textarea>
+                <span asp-validation-for="Team.comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

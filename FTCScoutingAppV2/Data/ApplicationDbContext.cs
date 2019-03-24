@@ -14,5 +14,7 @@ namespace FTCScoutingAppV2.Data
         {
         }
         public DbSet<FTCScoutingAppV2.Models.Event> Event { get; set; }
+        public DbSet<FTCScoutingAppV2.Models.Match> Match { get; set; }
+        public DbSet<FTCScoutingAppV2.Models.Team> Team { get; set; }
     }
 }
