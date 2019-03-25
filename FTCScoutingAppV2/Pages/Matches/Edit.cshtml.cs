@@ -64,7 +64,7 @@ namespace FTCScoutingAppV2.Pages.Matches
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Events/Index");
         }
 
         private bool MatchExists(int id)

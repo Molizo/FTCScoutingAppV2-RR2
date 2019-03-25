@@ -35,9 +35,6 @@
                 @Html.DisplayFor(modelItem => item.eventLocation)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.allowedUserIDs)
-            </td>
-            <td>
                 <a asp-page="/Teams/Index" asp-route-id="@item.ID">Teams</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>

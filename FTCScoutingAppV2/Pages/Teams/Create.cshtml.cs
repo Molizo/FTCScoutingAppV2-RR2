@@ -38,7 +38,7 @@ namespace FTCScoutingAppV2.Pages.Teams
             _context.Team.Add(Team);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Events/Index");
         }
     }
 }

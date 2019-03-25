@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Match.ID" />
+            <input type="hidden" asp-for="Match.teamID" />
             <div class="form-group">
                 <label asp-for="Match.matchType" class="control-label"></label>
                 <input asp-for="Match.matchType" class="form-control" />
@@ -32,7 +33,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a href='javascript:history.go(-1)'>Back to match list</a>
 </div>
 
 @section Scripts {

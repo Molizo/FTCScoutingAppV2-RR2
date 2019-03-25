@@ -64,7 +64,7 @@ namespace FTCScoutingAppV2.Pages.Teams
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Events/Index");
         }
 
         private bool TeamExists(int id)

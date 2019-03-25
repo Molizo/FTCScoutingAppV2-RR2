@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Team.ID" />
+            <input type="hidden" asp-for="Team.eventID" />
             <div class="form-group">
                 <label asp-for="Team.teamID" class="control-label"></label>
                 <input asp-for="Team.teamID" class="form-control" />
@@ -42,7 +43,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a href='javascript:history.go(-1)'>Back to team list</a>
 </div>
 
 @section Scripts {
