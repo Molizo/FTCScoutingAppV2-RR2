@@ -2,13 +2,13 @@
 @model FTCScoutingAppV2.Pages.Events.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Events";
 }
 
-<h2>Index</h2>
+<h2>Events</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Add an event</a>
 </p>
 <table class="table">
     <thead>
@@ -38,8 +38,7 @@
                 @Html.DisplayFor(modelItem => item.allowedUserIDs)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="/Teams/Index" asp-route-id="@item.ID">Teams</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>

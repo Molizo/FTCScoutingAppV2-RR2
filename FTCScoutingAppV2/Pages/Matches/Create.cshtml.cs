@@ -33,6 +33,7 @@ namespace FTCScoutingAppV2.Pages.Matches
             {
                 return Page();
             }
+            Match.teamID = HttpContext.Request.Query["id"];
 
             _context.Match.Add(Match);
             await _context.SaveChangesAsync();

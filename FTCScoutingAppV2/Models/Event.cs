@@ -15,8 +15,7 @@ namespace FTCScoutingAppV2.Models
         public string eventName { get;set;}
         [Display(Name = "Event location")]
         public string eventLocation { get;set;}
-
-        public List<Team> teams { get;set;}
+        
         public string allowedUserIDs { get;set;}
     }
 }

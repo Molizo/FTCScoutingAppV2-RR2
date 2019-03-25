@@ -19,11 +19,21 @@ namespace FTCScoutingAppV2.Pages.Matches
             _context = context;
         }
 
-        public IList<Match> Match { get;set; }
+        public IList<Match> AllMatches { get;set; }
+        public IList<Team> Teams { get;set;}
+        public IList<Match> Matches { get;set;}
+        public string routingID { get;set;}
 
         public async Task OnGetAsync()
         {
-            Match = await _context.Match.ToListAsync();
+            AllMatches = await _context.Match.ToListAsync();
+            Matches = new List<Match>();
+            routingID = HttpContext.Request.Query["id"];
+            foreach(var match in AllMatches)
+            {
+                if(match.teamID == routingID)
+                    Matches.Add(match);
+            }
         }
     }
 }

@@ -2,41 +2,48 @@
 @model FTCScoutingAppV2.Pages.Matches.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Matches";
 }
 
-<h2>Index</h2>
+@{
+    string routingID = HttpContext.Request.Query["id"];
+}
+
+<h2>Matches</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    Matches for team #@routingID | @Html.DisplayFor(model => model.Matches.Count) matches |
+    <a asp-page="Create" asp-route-id="@routingID">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Match[0].matchType)
+                @Html.DisplayNameFor(model => model.Matches[0].matchType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Match[0].matchNumber)
+                @Html.DisplayNameFor(model => model.Matches[0].matchNumber)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Match) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.matchType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.matchNumber)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var match in Model.Matches)
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => match.matchType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => match.matchNumber)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@match.ID">E</a> |
+                        <a asp-page="./Details" asp-route-id="@match.ID">D</a> |
+                        <a asp-page="./Delete" asp-route-id="@match.ID">R</a>
+                    </td>
+                </tr>
+        }
     </tbody>
 </table>
+<strong>E - Edit    D - Details     R - Remove</strong>

@@ -20,5 +20,7 @@ namespace FTCScoutingAppV2.Models
         public MatchTypes? matchType { get;set;}
         [Display(Name ="Match number")]
         public string matchNumber { get;set;}
+
+        public string teamID { get;set;}
     }
 }

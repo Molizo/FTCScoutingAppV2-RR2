@@ -22,6 +22,6 @@ namespace FTCScoutingAppV2.Models
         [DataType(DataType.MultilineText)]
         public string comments { get;set;}
 
-        public virtual List<Match> matches { get;set;}
+        public string eventID { get;set;}
     }
 }

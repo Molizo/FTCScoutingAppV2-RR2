@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FTCScoutingAppV2.Data;
 using FTCScoutingAppV2.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FTCScoutingAppV2.Pages.Teams
 {
@@ -19,11 +20,20 @@ namespace FTCScoutingAppV2.Pages.Teams
             _context = context;
         }
 
-        public IList<Team> Team { get;set; }
+        public IList<Team> Teams { get;set; }
+        public IList<Team> AllTeams { get;set;}
+        public string routingID { get;set;}
 
         public async Task OnGetAsync()
         {
-            Team = await _context.Team.ToListAsync();
+            AllTeams = await _context.Team.ToListAsync();
+            Teams = new List<Team>();
+            routingID = HttpContext.Request.Query["id"];
+            foreach(var team in AllTeams)
+            {
+                if(team.eventID == routingID)
+                    Teams.Add(team);
+            }
         }
     }
 }
