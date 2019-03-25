@@ -5,15 +5,11 @@
     ViewData["Title"] = "Teams";
 }
 
+<meta http-equiv="refresh" content="10">
 <h2>Teams</h2>
-
-@{ 
-    string routingID = HttpContext.Request.Query["id"];
-}
-
 <p>
-    Teams for event #@routingID | @Html.DisplayFor(model => model.Teams.Count) teams |
-    <a asp-page="Create" asp-route-id="@routingID">Add a team</a>
+    Teams for event @Model.eventName | @Html.DisplayFor(model => model.Teams.Count) teams |
+    <a asp-page="Create" asp-route-id="@Model.routingID">Add a team</a>
 </p>
 <table class="table">
     <thead>

@@ -20,20 +20,37 @@ namespace FTCScoutingAppV2.Pages.Teams
             _context = context;
         }
 
+        public IList<Event> Events { get; set; }
         public IList<Team> Teams { get;set; }
-        public IList<Team> AllTeams { get;set;}
-        public string routingID { get;set;}
+        public IList<Team> AllTeams { get;set; }
+        public string AllowedUserIDs { get;set;}
+        public string routingID { get;set; }
+        public string eventName { get;set; }
 
         public async Task OnGetAsync()
         {
             AllTeams = await _context.Team.ToListAsync();
+            Events = await _context.Event.ToListAsync();
             Teams = new List<Team>();
+            AllowedUserIDs = String.Empty;
+            eventName = String.Empty;
             routingID = HttpContext.Request.Query["id"];
             foreach(var team in AllTeams)
             {
                 if(team.eventID == routingID)
                     Teams.Add(team);
             }
+            foreach(var item in Events)
+            {
+                if(item.ID.ToString() == routingID)
+                {
+                    eventName = item.eventName;
+                    AllowedUserIDs = item.allowedUserIDs;
+                }
+            }
+
+            if(eventName == String.Empty)
+                throw new Exception("Cannot retrieve teams for event with ID" + routingID);
         }
     }
 }
