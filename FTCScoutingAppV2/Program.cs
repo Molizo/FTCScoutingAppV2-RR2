@@ -21,4 +21,5 @@ namespace FTCScoutingAppV2
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
     }
+    
 }

@@ -7,24 +7,52 @@
 
 <meta http-equiv="refresh" content="10">
 <h2>Teams</h2>
-<p>
+<p class="hidden-mobile">
     Teams for event @Model.eventName | @Html.DisplayFor(model => model.Teams.Count) teams |
+    <a asp-page="Create" asp-route-id="@Model.routingID">Add a team</a>
+</p>
+<p class="hidden-tablet hidden-desktop">
+    Event @Model.eventName | 
     <a asp-page="Create" asp-route-id="@Model.routingID">Add a team</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Teams[0].teamID)
+                ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Teams[0].teamName)
+                Name
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Teams[0].teamLocation)
+            <th class="hidden-mobile">
+                Exp PTS
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Teams[0].comments)
+            <thc lass="hidden-mobile">
+                Avg PTS
+            </th>
+            <th class="hidden-mobile">
+                OPR
+            </th>
+            <th class="hidden-mobile">
+                Str loc
+            </th>
+            <th class="hidden-mobile">
+                Lands
+            </th>
+            <th class="hidden-mobile">
+                Samp
+            </th>
+            <th class="hidden-mobile">
+                Dbl samp
+            </th>
+            <th class="hidden-mobile">
+                Team mrk
+            </th>
+            <th class="hidden-mobile">
+                Park
+            </th>
+            <th class="hidden-mobile">
+                End loc
             </th>
             <th></th>
         </tr>
@@ -32,26 +60,50 @@
     <tbody>
         @foreach (var team in Model.Teams)
         {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.teamID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.teamName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.teamLocation)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.comments)
-                    </td>
-                    <td>
-                        <a asp-page="/Matches/Index" asp-route-id="@team.ID">Matches</a> |
-                        <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
-                        <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
-                        <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => team.teamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => team.teamName)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.ExpPTS)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.AvgPTS)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.OPR)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.startLocation)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.landing)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.sampling)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.doubleSampling)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.teamMarker)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.parking)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.endLocation)
+            </td>
+            <td>
+                <a asp-page="/Matches/Index" asp-route-id="@team.ID">Matches</a> |
+                <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
+                <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
+                <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
