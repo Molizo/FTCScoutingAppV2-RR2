@@ -28,7 +28,7 @@
             <th style="background-color:dimgray; color:white;">
                 Type
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
+            <th style="background-color:red; color:white;">
                 PTS
             </th>
             <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
@@ -71,58 +71,73 @@
         @foreach (var match in Model.Matches)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => match.matchNumber)
-                </td>
+                @if (match.alliance == Models.Alliances.Red)
+                {
+                    <td style="background-color: red; color: white;">
+                        @Html.DisplayFor(modelItem => match.matchNumber)
+                    </td>
+                }
+                else if (match.alliance == Models.Alliances.Blue)
+                {
+                    <td style="background-color: blue;color: white;">
+                        @Html.DisplayFor(modelItem => match.matchNumber)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => match.matchNumber)
+                    </td>
+                }
+
                 <td>
                     @Html.DisplayFor(modelItem => match.matchType)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => match.points)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.goldMinerals)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.silverMinerals)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.depotMinerals)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.cycles)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.startLocation)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.landing)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.sampling)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.doubleSampling)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.teamMarker)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.parking)
                 </td>
-                <td>
+                <td class="hidden-mobile">
                     @Html.DisplayFor(modelItem => match.endLocation)
                 </td>
-                <td width="50px">
+                <td>
                     <a asp-page="./Edit" asp-route-id="@match.ID">E</a> |
-                    <a asp-page="./Details" asp-route-id="@match.ID">D</a> |
                     <a asp-page="./Delete" asp-route-id="@match.ID">R</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<strong>E-Edit D-Details R-Remove</strong>
+<strong>E-Edit R-Remove</strong>
 <br />
 <strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy</strong>
 <a asp-page="Create" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match</a>

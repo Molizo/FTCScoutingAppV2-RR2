@@ -41,6 +41,28 @@ namespace FTCScoutingAppV2.Pages.Matches
 
         public async Task<IActionResult> OnPostAsync()
         {
+            UInt64 points = 0;
+            if (Match.landing == true)
+                points += 30;
+            if (Match.teamMarker == true)
+                points += 15;
+            if (Match.parking == true)
+                points += 10;
+            if (Match.sampling == true)
+                points += 25;
+            if (Match.doubleSampling == true)
+                points += 25;
+            if (Match.endLocation == EndLocations.Latched)
+                points += 50;
+            else if (Match.endLocation == EndLocations.Fully)
+                points += 25;
+            else if (Match.endLocation == EndLocations.Partial)
+                points += 15;
+            points += Match.goldMinerals * 5;
+            points += Match.silverMinerals * 5;
+            points += Match.depotMinerals * 2;
+            Match.points = points;
+
             if (!ModelState.IsValid)
             {
                 return Page();
