@@ -27,7 +27,7 @@
             <th class="hidden-mobile">
                 Exp PTS
             </th>
-            <thc lass="hidden-mobile">
+            <th class="hidden-mobile">
                 Avg PTS
             </th>
             <th class="hidden-mobile">
@@ -99,13 +99,16 @@
             </td>
             <td>
                 <a asp-page="/Matches/Index" asp-route-id="@team.ID">Matches</a> |
-                <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
-                <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
-                <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
+                <a asp-page = "./Edit" asp-route-id = "@team.ID">E</a>
+                <div class="hidden-mobile">
+                    |
+                    <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
+                    <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
+                </div>
             </td>
         </tr>
-        }
-    </tbody>
+}
+</tbody>
 </table>
 <strong>E - Edit    D - Details     R - Remove</strong>
 <a asp-page="Create" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add team</a>

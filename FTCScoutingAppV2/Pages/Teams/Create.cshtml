@@ -2,10 +2,10 @@
 @model FTCScoutingAppV2.Pages.Teams.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add a team";
 }
 
-<h2>Create</h2>
+<h1>Create</h1>
 
 <h4>Team</h4>
 <hr />
@@ -13,6 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h3>Team information</h3>
             <div class="form-group">
                 <label asp-for="Team.teamID" class="control-label"></label>
                 <input asp-for="Team.teamID" class="form-control" />
@@ -28,9 +29,57 @@
                 <input asp-for="Team.teamLocation" class="form-control" />
                 <span asp-validation-for="Team.teamLocation" class="text-danger"></span>
             </div>
+            <h3>Robot information</h3>
+            <div class="form-group">
+                <label asp-for="Team.startLocation" class="control-label"></label>
+                <input asp-for="Team.startLocation" class="form-control" />
+                <span asp-validation-for="Team.startLocation" class="text-danger"></span>
+            </div>
+            <h4>Autonomy</h4>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Team.landing" /> @Html.DisplayNameFor(model => model.Team.landing)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Team.sampling" /> @Html.DisplayNameFor(model => model.Team.sampling)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Team.doubleSampling" /> @Html.DisplayNameFor(model => model.Team.doubleSampling)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Team.teamMarker" /> @Html.DisplayNameFor(model => model.Team.teamMarker)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Team.parking" /> @Html.DisplayNameFor(model => model.Team.parking)
+                    </label>
+                </div>
+            </div>
+            <h4>End game</h4>
+            <div class="form-group">
+                <label asp-for="Team.endLocation" class="control-label"></label>
+                <input asp-for="Team.endLocation" class="form-control" />
+                <span asp-validation-for="Team.endLocation" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Team.comments" class="control-label"></label>
-                <textarea asp-for="Team.comments" class="form-control"></textarea>
+                <textarea asp-for="Team.comments" class="form-control" text-wrap:normal" type="text" placeholder="Add any comments regaring the team here"></textarea>
                 <span asp-validation-for="Team.comments" class="text-danger"></span>
             </div>
             <div class="form-group">
