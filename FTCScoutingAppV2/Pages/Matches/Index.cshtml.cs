@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using FTCScoutingAppV2.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Matches
 {
@@ -19,19 +15,19 @@ namespace FTCScoutingAppV2.Pages.Matches
             _context = context;
         }
 
-        public IList<Match> AllMatches { get;set; }
-        public IList<Team> Teams { get;set;}
-        public IList<Match> Matches { get;set;}
-        public string routingID { get;set;}
+        public IList<Match> AllMatches { get; set; }
+        public IList<Team> Teams { get; set; }
+        public IList<Match> Matches { get; set; }
+        public string routingID { get; set; }
 
         public async Task OnGetAsync()
         {
             AllMatches = await _context.Match.ToListAsync();
             Matches = new List<Match>();
             routingID = HttpContext.Request.Query["id"];
-            foreach(var match in AllMatches)
+            foreach (var match in AllMatches)
             {
-                if(match.teamID == routingID)
+                if (match.teamID == routingID)
                     Matches.Add(match);
             }
         }

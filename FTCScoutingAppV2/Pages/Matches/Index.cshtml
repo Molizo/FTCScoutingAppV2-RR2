@@ -30,19 +30,19 @@
     <tbody>
         @foreach (var match in Model.Matches)
         {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => match.matchType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => match.matchNumber)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@match.ID">E</a> |
-                        <a asp-page="./Details" asp-route-id="@match.ID">D</a> |
-                        <a asp-page="./Delete" asp-route-id="@match.ID">R</a>
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => match.matchType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => match.matchNumber)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@match.ID">E</a> |
+                <a asp-page="./Details" asp-route-id="@match.ID">D</a> |
+                <a asp-page="./Delete" asp-route-id="@match.ID">R</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -14,17 +14,23 @@
 
 /* Make .svg files in the carousel display properly in older browsers */
 
-.carousel-inner .item img[src$=".svg"] { width: 100%; }
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
 
 /* QR code generator */
 
-#qrCode { margin: 15px; }
+#qrCode {
+    margin: 15px;
+}
 
 /* Hide/rearrange for smaller screens */
 
 @media screen and (max-width: 767px) {
     /* Hide captions */
-    .carousel-caption { display: none; }
+    .carousel-caption {
+        display: none;
+    }
 }
 
 .container {
@@ -38,25 +44,25 @@
     z-index: 500;
 }
 
-#navbar a {
-    color: #f2f2f2;
-    display: block;
-    float: left;
-    font-size: 17px;
-    padding: 14px 16px;
-    text-align: center;
-    text-decoration: none;
-}
+    #navbar a {
+        color: #f2f2f2;
+        display: block;
+        float: left;
+        font-size: 17px;
+        padding: 14px 16px;
+        text-align: center;
+        text-decoration: none;
+    }
 
-#navbar a:hover {
-    background-color: #fffffd;
-    color: black;
-}
+        #navbar a:hover {
+            background-color: #fffffd;
+            color: black;
+        }
 
-#navbar a.logo {
-    background-color: #fffffd;
-    color: white;
-}
+        #navbar a.logo {
+            background-color: #fffffd;
+            color: white;
+        }
 
 .sticky {
     position: fixed;
@@ -64,20 +70,30 @@
     width: 100%;
 }
 
-.sticky + .content { padding-top: 60px; }
+    .sticky + .content {
+        padding-top: 60px;
+    }
 
-footer { padding: 7px; }
+footer {
+    padding: 7px;
+}
 
 /* Visibility Helpers */
 
 @media only screen and (min-width: 769px) {
-    .visible-mobile, .visible-tablet, .hidden-desktop { display: none !important; }
+    .visible-mobile, .visible-tablet, .hidden-desktop {
+        display: none !important;
+    }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 768px) {
-    .visible-mobile, .hidden-tablet, .visible-desktop { display: none !important; }
+    .visible-mobile, .hidden-tablet, .visible-desktop {
+        display: none !important;
+    }
 }
 
 @media only screen and (max-width: 479px) {
-    .hidden-mobile, .visible-tablet, .visible-desktop { display: none !important; }
+    .hidden-mobile, .visible-tablet, .visible-desktop {
+        display: none !important;
+    }
 }

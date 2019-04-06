@@ -19,62 +19,60 @@
     </environment>
 </head>
 <body>
-<!--Navigation-->
-<div id="navbar" class="sticky">
-    <a class="hidden-mobile logo" href="https://mihneavisoiu.ro/" style="padding: 5px;">
-        <img src="~/images/logoFull.png" height="42px" width="auto"/>
-    </a>
-    <a class="hidden-desktop hidden-tablet logo" href="https://mihneavisoiu.ro/" style="padding: 5px;">
-        <img src="~/images/logo.png" height="42px" width="auto"/>
-    </a>
-    <a asp-page="/Index">Home</a>
-    @{
+    <!--Navigation-->
+    <div id="navbar" class="sticky">
+        <a class="hidden-mobile logo" href="https://mihneavisoiu.ro/" style="padding: 5px;">
+            <img src="~/images/logoFull.png" height="42px" width="auto" />
+        </a>
+        <a class="hidden-desktop hidden-tablet logo" href="https://mihneavisoiu.ro/" style="padding: 5px;">
+            <img src="~/images/logo.png" height="42px" width="auto" />
+        </a>
+        <a asp-page="/Index">Home</a>
+        @{
         if (User.Identity.IsAuthenticated)
         {
             <a asp-page="/Events/Index">Events</a>
         }
-    }
-    <partial name="_LoginPartial"/>
-</div>
-
-<partial name="_CookieConsentPartial"/>
-
-<div class="container body-content">
-    @RenderBody()
-</div>
-
-<footer style="background-color: #1c313a;">
-    <div style="text-align: center" height="35px">
-        <a class="left" href="https://mihneavisoiu.ro/">
-            <img src="~/images/logo.png" height="50px"/>
-            <text style="color: #fffffd; font-size: 17px;">&copy; 2019 - Mihnea Theodor Visoiu </text>
-        </a>
+        }
+        <partial name="_LoginPartial" />
     </div>
-</footer>
 
-<environment include="Development">
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</environment>
-<environment exclude="Development">
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            crossorigin="anonymous"
-            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-    </script>
-    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-            crossorigin="anonymous"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-    </script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
-</environment>
+    <partial name="_CookieConsentPartial" />
 
-@RenderSection("Scripts", false)
+    <div class="container body-content">
+        @RenderBody()
+    </div>
 
+    <footer style="background-color: #1c313a;">
+        <div style="text-align: center" height="35px">
+            <a class="left" href="https://mihneavisoiu.ro/">
+                <img src="~/images/logo.png" height="50px" />
+                <text style="color: #fffffd; font-size: 17px;">&copy; 2019 - Mihnea Theodor Visoiu </text>
+            </a>
+        </div>
+    </footer>
 
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", false)
 </body>
 </html>

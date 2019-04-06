@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using FTCScoutingAppV2.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Events
 {
@@ -19,7 +15,7 @@ namespace FTCScoutingAppV2.Pages.Events
             _context = context;
         }
 
-        public IList<Event> Event { get;set; }
+        public IList<Event> Event { get; set; }
 
         public async Task OnGetAsync()
         {

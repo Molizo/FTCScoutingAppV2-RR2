@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FTCScoutingAppV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Matches
 {

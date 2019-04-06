@@ -32,26 +32,26 @@
     <tbody>
         @foreach (var team in Model.Teams)
         {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.teamID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.teamName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.teamLocation)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => team.comments)
-                    </td>
-                    <td>
-                        <a asp-page="/Matches/Index" asp-route-id="@team.ID">Matches</a> |
-                        <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
-                        <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
-                        <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => team.teamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => team.teamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => team.teamLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => team.comments)
+            </td>
+            <td>
+                <a asp-page="/Matches/Index" asp-route-id="@team.ID">Matches</a> |
+                <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
+                <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
+                <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

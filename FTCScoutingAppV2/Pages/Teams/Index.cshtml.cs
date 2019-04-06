@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using FTCScoutingAppV2.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
-using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Teams
 {
@@ -21,11 +18,11 @@ namespace FTCScoutingAppV2.Pages.Teams
         }
 
         public IList<Event> Events { get; set; }
-        public IList<Team> Teams { get;set; }
-        public IList<Team> AllTeams { get;set; }
-        public string AllowedUserIDs { get;set;}
-        public string routingID { get;set; }
-        public string eventName { get;set; }
+        public IList<Team> Teams { get; set; }
+        public IList<Team> AllTeams { get; set; }
+        public string AllowedUserIDs { get; set; }
+        public string routingID { get; set; }
+        public string eventName { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -35,21 +32,21 @@ namespace FTCScoutingAppV2.Pages.Teams
             AllowedUserIDs = String.Empty;
             eventName = String.Empty;
             routingID = HttpContext.Request.Query["id"];
-            foreach(var team in AllTeams)
+            foreach (var team in AllTeams)
             {
-                if(team.eventID == routingID)
+                if (team.eventID == routingID)
                     Teams.Add(team);
             }
-            foreach(var item in Events)
+            foreach (var item in Events)
             {
-                if(item.ID.ToString() == routingID)
+                if (item.ID.ToString() == routingID)
                 {
                     eventName = item.eventName;
                     AllowedUserIDs = item.allowedUserIDs;
                 }
             }
 
-            if(eventName == String.Empty)
+            if (eventName == String.Empty)
                 throw new Exception("Cannot retrieve teams for event with ID" + routingID);
         }
     }

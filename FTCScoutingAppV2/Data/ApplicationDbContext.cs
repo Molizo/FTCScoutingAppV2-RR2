@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Models;
 
 namespace FTCScoutingAppV2.Data
 {
@@ -13,6 +9,7 @@ namespace FTCScoutingAppV2.Data
             : base(options)
         {
         }
+
         public DbSet<FTCScoutingAppV2.Models.Event> Event { get; set; }
         public DbSet<FTCScoutingAppV2.Models.Match> Match { get; set; }
         public DbSet<FTCScoutingAppV2.Models.Team> Team { get; set; }
