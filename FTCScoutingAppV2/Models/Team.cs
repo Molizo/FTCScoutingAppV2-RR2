@@ -29,9 +29,9 @@ namespace FTCScoutingAppV2.Models
         public string teamLocation { get;set;}
         
         [Display(Name ="Expected points",ShortName ="Exp PTS")]
-        public int ExpPTS { get;set;}
+        public UInt64 ExpPTS { get;set;}
         [Display(Name = "Average points", ShortName = "Avg PTS")]
-        public int AvgPTS { get; set; }
+        public UInt64 AvgPTS { get; set; }
         [Display(Name = "OPR points", ShortName = "OPR")]
         public int OPR { get; set; }
 
