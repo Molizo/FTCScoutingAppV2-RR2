@@ -34,6 +34,15 @@ namespace FTCScoutingAppV2.Models
         [Display(Name = "Robot parks", ShortName = "PRK")]
         public bool parking { get; set; }
 
+        [Display(Name = "Gold minerals", ShortName = "Gold")]
+        public UInt64 goldMinerals { get; set; }
+        [Display(Name = "Silver minerals", ShortName = "Silver")]
+        public UInt64 silverMinerals { get; set; }
+        [Display(Name = "Depot minerals", ShortName = "Depot")]
+        public UInt64 depotMinerals { get; set; }
+        [Display(Name = "Cycles minerals", ShortName = "Cycles")]
+        public UInt64 cycles { get; set; }
+
         [Display(Name = "Ending location", ShortName = "End loc")]
         public EndLocations? endLocation { get; set; }
 

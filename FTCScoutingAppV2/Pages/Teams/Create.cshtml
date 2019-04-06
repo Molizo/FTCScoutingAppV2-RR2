@@ -31,6 +31,26 @@
             </div>
             <h3>Robot information</h3>
             <div class="form-group">
+                <label asp-for="Team.goldMinerals" class="control-label"></label>
+                <input asp-for="Team.goldMinerals" class="form-control" />
+                <span asp-validation-for="Team.goldMinerals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.silverMinerals" class="control-label"></label>
+                <input asp-for="Team.silverMinerals" class="form-control" />
+                <span asp-validation-for="Team.silverMinerals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.depotMinerals" class="control-label"></label>
+                <input asp-for="Team.depotMinerals" class="form-control" />
+                <span asp-validation-for="Team.depotMinerals" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.cycles" class="control-label"></label>
+                <input asp-for="Team.cycles" class="form-control" />
+                <span asp-validation-for="Team.cycles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Team.startLocation" class="control-label"></label>
                 <input asp-for="Team.startLocation" class="form-control" />
                 <span asp-validation-for="Team.startLocation" class="text-danger"></span>

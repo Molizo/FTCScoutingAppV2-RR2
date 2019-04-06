@@ -35,6 +35,15 @@ namespace FTCScoutingAppV2.Models
         [Display(Name = "OPR points", ShortName = "OPR")]
         public int OPR { get; set; }
 
+        [Display(Name ="Gold minerals",ShortName ="Gold")]
+        public UInt64 goldMinerals { get;set;}
+        [Display(Name = "Silver minerals", ShortName = "Silver")]
+        public UInt64 silverMinerals { get; set; }
+        [Display(Name = "Depot minerals", ShortName = "Depot")]
+        public UInt64 depotMinerals { get; set; }
+        [Display(Name = "Cycles minerals", ShortName = "Cycles")]
+        public UInt64 cycles { get; set; }
+
         [Display(Name ="Preferred starting location",ShortName ="Str loc")]
         public StartLocations? startLocation { get;set;}
 
