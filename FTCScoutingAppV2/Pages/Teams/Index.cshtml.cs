@@ -22,6 +22,7 @@ namespace FTCScoutingAppV2.Pages.Teams
 
         public IList<Event> Events { get; set; }
         public IList<Team> Teams { get;set; }
+        public IList<Match> Matches { get; set; }
         public IList<Team> AllTeams { get;set; }
         public string AllowedUserIDs { get;set;}
         public string routingID { get;set; }
@@ -31,6 +32,7 @@ namespace FTCScoutingAppV2.Pages.Teams
         {
             AllTeams = await _context.Team.ToListAsync();
             Events = await _context.Event.ToListAsync();
+            Matches = await _context.Match.ToListAsync();
             Teams = new List<Team>();
             AllowedUserIDs = String.Empty;
             eventName = String.Empty;
@@ -38,7 +40,20 @@ namespace FTCScoutingAppV2.Pages.Teams
             foreach(var team in AllTeams)
             {
                 if(team.eventID == routingID)
+                {
                     Teams.Add(team);
+                    UInt64 totalPoints=0,nrOfMatches=0;
+                    foreach(var match in Matches)
+                    {
+                        if(match.teamID == team.ID.ToString())
+                        {
+                            totalPoints += match.points;
+                            nrOfMatches++;
+                        }
+                    }
+                    if(nrOfMatches != 0)
+                        team.AvgPTS = totalPoints / nrOfMatches;
+                }
             }
             foreach(var item in Events)
             {
