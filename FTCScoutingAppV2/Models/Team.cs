@@ -8,7 +8,7 @@ namespace FTCScoutingAppV2.Models
 {
     public enum StartLocations
     {
-        Crater,Depot
+        Crater,Depot,Any
     }
 
     public enum EndLocations
@@ -41,7 +41,7 @@ namespace FTCScoutingAppV2.Models
         public UInt64 silverMinerals { get; set; }
         [Display(Name = "Depot minerals", ShortName = "Depot")]
         public UInt64 depotMinerals { get; set; }
-        [Display(Name = "Cycles minerals", ShortName = "Cycles")]
+        [Display(Name = "Cycles", ShortName = "Cycles")]
         public UInt64 cycles { get; set; }
 
         [Display(Name ="Preferred starting location",ShortName ="Str loc")]

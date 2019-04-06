@@ -5,7 +5,7 @@
     ViewData["Title"] = "Teams";
 }
 
-<meta http-equiv="refresh" content="10">
+<meta http-equiv="refresh" content="1">
 <h2>Teams</h2>
 <p class="hidden-mobile">
     Teams for event @Model.eventName | @Html.DisplayFor(model => model.Teams.Count) teams |
@@ -18,43 +18,55 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th style="background-color:dimgray; color:white;">
                 ID
             </th>
-            <th>
+            <th style="background-color:dimgray; color:white;">
                 Name
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:red; color:white;">
                 Exp PTS
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:red; color:white;">
                 Avg PTS
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:red; color:white;">
                 OPR
             </th>
-            <th class="hidden-mobile">
-                Str loc
+            <th class="hidden-mobile" style="background-color:lime; color:white;">
+                Gold
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:lime; color:white;">
+                Silv
+            </th>
+            <th class="hidden-mobile" style="background-color:lime; color:white;">
+                Depot
+            </th>
+            <th class="hidden-mobile" style="background-color:lime; color:white;">
+                Cycl
+            </th>
+            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+                Start loc
+            </th>
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 Lands
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 Samp
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 Dbl samp
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 Team mrk
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 Park
             </th>
-            <th class="hidden-mobile">
+            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
                 End loc
             </th>
-            <th></th>
+            <th style="background-color:dimgray; color:white;">Options</th>
         </tr>
     </thead>
     <tbody>
@@ -77,6 +89,18 @@
                 @Html.DisplayFor(modelItem => team.OPR)
             </td>
             <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.goldMinerals)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.silverMinerals)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.depotMinerals)
+            </td>
+            <td class="hidden-mobile">
+                @Html.DisplayFor(modelItem => team.cycles)
+            </td>
+            <td class="hidden-mobile">
                 @Html.DisplayFor(modelItem => team.startLocation)
             </td>
             <td class="hidden-mobile">
@@ -97,18 +121,17 @@
             <td class="hidden-mobile">
                 @Html.DisplayFor(modelItem => team.endLocation)
             </td>
-            <td>
-                <a asp-page="/Matches/Index" asp-route-id="@team.ID">Matches</a> |
-                <a asp-page = "./Edit" asp-route-id = "@team.ID">E</a>
-                <div class="hidden-mobile">
-                    |
-                    <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
-                    <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
-                </div>
+            <td width="103px">
+                <a asp-page="/Matches/Index" asp-route-id="@team.ID">M</a> |
+                <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
+                <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
+                <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
             </td>
         </tr>
 }
 </tbody>
 </table>
-<strong>E - Edit    D - Details     R - Remove</strong>
+<strong>M-Matches E-Edit D-Details R-Remove</strong>
+<br />
+<strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy</strong>
 <a asp-page="Create" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add team</a>
