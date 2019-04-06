@@ -16,7 +16,9 @@
             <h3>Match information</h3>
             <div class="form-group">
                 <label asp-for="Match.matchType" class="control-label"></label>
-                <input asp-for="Match.matchType" class="form-control" />
+                <select asp-for="Match.matchType" asp-items="Html.GetEnumSelectList<Models.MatchTypes>()">
+                    <option selected="selected" value="">Please select match type</option>
+                </select>
                 <span asp-validation-for="Match.matchType" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,12 +28,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Match.alliance" class="control-label"></label>
-                <input asp-for="Match.alliance" class="form-control" />
+                <select asp-for="Match.alliance" asp-items="Html.GetEnumSelectList<Models.Alliances>()">
+                    <option selected="selected" value="">Please select alliance</option>
+                </select>
                 <span asp-validation-for="Match.alliance" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Match.startLocation" class="control-label"></label>
-                <input asp-for="Match.startLocation" class="form-control" />
+                <select asp-for="Match.startLocation" asp-items="Html.GetEnumSelectList<Models.StartLocations>()">
+                    <option selected="selected" value="">Please select start location</option>
+                </select>
                 <span asp-validation-for="Match.startLocation" class="text-danger"></span>
             </div>
             <h3>Autonomy period</h3>
@@ -94,7 +100,9 @@
             <h4>End game</h4>
             <div class="form-group">
                 <label asp-for="Match.endLocation" class="control-label"></label>
-                <input asp-for="Match.endLocation" class="form-control" />
+                <select asp-for="Match.endLocation" asp-items="Html.GetEnumSelectList<Models.EndLocations>()">
+                    <option selected="selected" value="">Please select end location</option>
+                </select>
                 <span asp-validation-for="Match.endLocation" class="text-danger"></span>
             </div>
             <div class="form-group">
