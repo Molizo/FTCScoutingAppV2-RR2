@@ -6,24 +6,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FTCScoutingAppV2.Models
 {
-    public enum StartLocations
-    {
-        Crater,Depot,Any
-    }
-
-    public enum EndLocations
-    {
-        Latched,Fully,Partial,None
-    }
-
+    
     public class Team
     {
         [Key]
         public int ID { get;set;}
 
         [Display(Name = "Team ID",ShortName ="ID")]
+        [Required]
         public string teamID { get;set;}
         [Display(Name = "Team name",ShortName ="Name")]
+        [Required]
         public string teamName { get;set;}
         [Display(Name = "Team location",ShortName ="Location")]
         public string teamLocation { get;set;}

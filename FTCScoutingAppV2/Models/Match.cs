@@ -6,14 +6,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FTCScoutingAppV2.Models
 {
-    public enum MatchTypes
-    {
-        Qualification, Elimination
-    }
-    public enum Alliances
-    {
-        Red, Blue
-    }
     public class Match
     {
         [Key]
@@ -30,7 +22,7 @@ namespace FTCScoutingAppV2.Models
         public UInt64 points { get; set; }
 
         [Display(Name = "Starting location", ShortName = "Str loc")]
-        public StartLocations? startLocation { get; set; }
+        public MatchStartLocations? startLocation { get; set; }
 
         [Display(Name = "Robot lands", ShortName = "LND")]
         public bool landing { get; set; }
