@@ -10,6 +10,10 @@ namespace FTCScoutingAppV2.Models
     {
         Qualification, Elimination
     }
+    public enum Alliances
+    {
+        Red, Blue
+    }
     public class Match
     {
         [Key]
@@ -19,6 +23,11 @@ namespace FTCScoutingAppV2.Models
         public MatchTypes? matchType { get;set;}
         [Display(Name ="Match number",ShortName ="Nr")]
         public string matchNumber { get;set;}
+
+        [Display(Name = "Alliance", ShortName = "Alc")]
+        public Alliances? alliance { get; set; }
+        [Display(Name = "Points earned", ShortName = "PTS")]
+        public UInt64 points { get; set; }
 
         [Display(Name = "Starting location", ShortName = "Str loc")]
         public StartLocations? startLocation { get; set; }

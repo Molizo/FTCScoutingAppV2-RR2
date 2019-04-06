@@ -11,40 +11,118 @@
 
 <h2>Matches</h2>
 
-<p>
+<p class="hidden-mobile">
     Matches for team #@routingID | @Html.DisplayFor(model => model.Matches.Count) matches |
+    <a asp-page="Create" asp-route-id="@routingID">Add a match</a>
+</p>
+<p class="hidden-tablet hidden-desktop">
+    Team #@routingID
     <a asp-page="Create" asp-route-id="@routingID">Add a match</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Matches[0].matchType)
+            <th style="background-color:dimgray; color:white;">
+                Nr
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Matches[0].matchNumber)
+            <th style="background-color:dimgray; color:white;">
+                Type
             </th>
-            <th></th>
+            <th class="hidden-mobile" style="background-color:red; color:white;">
+                PTS
+            </th>
+            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+                Gold
+            </th>
+            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+                Silv
+            </th>
+            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+                Depot
+            </th>
+            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+                Cycl
+            </th>
+            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+                Start loc
+            </th>
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
+                Lands
+            </th>
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
+                Samp
+            </th>
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
+                Dbl samp
+            </th>
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
+                Team mrk
+            </th>
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
+                Park
+            </th>
+            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+                End loc
+            </th>
+            <th style="background-color:dimgray; color:white;">Options</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var match in Model.Matches)
         {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => match.matchType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => match.matchNumber)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@match.ID">E</a> |
-                        <a asp-page="./Details" asp-route-id="@match.ID">D</a> |
-                        <a asp-page="./Delete" asp-route-id="@match.ID">R</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => match.matchNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.matchType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.points)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.goldMinerals)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.silverMinerals)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.depotMinerals)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.cycles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.startLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.landing)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.sampling)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.doubleSampling)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.teamMarker)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.parking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => match.endLocation)
+                </td>
+                <td width="50px">
+                    <a asp-page="./Edit" asp-route-id="@match.ID">E</a> |
+                    <a asp-page="./Details" asp-route-id="@match.ID">D</a> |
+                    <a asp-page="./Delete" asp-route-id="@match.ID">R</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-<strong>E - Edit    D - Details     R - Remove</strong>
+<strong>E-Edit D-Details R-Remove</strong>
+<br />
+<strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy</strong>
 <a asp-page="Create" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match</a>
