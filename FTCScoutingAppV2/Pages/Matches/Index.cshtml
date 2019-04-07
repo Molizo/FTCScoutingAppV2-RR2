@@ -15,10 +15,14 @@
 <p class="hidden-mobile">
     Matches for team #@Model.teamNumber | @Html.DisplayFor(model => model.Matches.Count) matches |
     <a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID">Add a match</a>
+    <br />
+    <a asp-page="/Teams/Index" asp-route-eventID="@Model.eventRoutingID">Go back to list of teams</a>
 </p>
 <p class="hidden-tablet hidden-desktop">
     Team #@Model.teamNumber
     <a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID">Add a match</a>
+    <br/>
+    <a asp-page="/Teams/Index" asp-route-eventID="@Model.eventRoutingID">Go back to list of teams</a>
 </p>
 <table class="table">
     <thead>
@@ -147,4 +151,4 @@
 <strong>E-Edit R-Remove</strong>
 <br />
 <strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy</strong>
-<a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match</a>
+<a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match</a>

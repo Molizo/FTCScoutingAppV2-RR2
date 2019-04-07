@@ -27,7 +27,7 @@ namespace FTCScoutingAppV2.Pages.Matches
         [BindProperty]
         public Match Match { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string eventID, string teamID)
         {
             if (!ModelState.IsValid)
             {
