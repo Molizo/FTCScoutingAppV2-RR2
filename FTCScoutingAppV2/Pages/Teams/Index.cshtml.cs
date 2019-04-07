@@ -79,10 +79,10 @@ namespace FTCScoutingAppV2.Pages.Teams
             }
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            IDSort = sortOrder == "TeamID" ? "ID_desc" : "TeamID";
-            ExpPTSSort = sortOrder == "ExpPTS" ? "exppts_desc" : "ExpPTS";
-            AvgPTSSort = sortOrder == "AvgPTS" ? "avgpts_desc" : "AvgPTS";
-            OPRSort = sortOrder == "OPR" ? "opr_desc" : "OPR";
+            IDSort = sortOrder == "id" ? "id_desc" : "id";
+            ExpPTSSort = sortOrder == "exppts" ? "exppts_desc" : "exppts";
+            AvgPTSSort = sortOrder == "avgpts" ? "avgpts_desc" : "avgpts";
+            OPRSort = sortOrder == "opr" ? "opr_desc" : "opr";
 
             IQueryable<Team> teamIQ = Teams.AsQueryable();
 
@@ -91,25 +91,25 @@ namespace FTCScoutingAppV2.Pages.Teams
                 case "name_desc":
                     teamIQ = teamIQ.OrderByDescending(t => t.teamName);
                     break;
-                case "TeamID":
+                case "id":
                     teamIQ = teamIQ.OrderBy(t => t.teamID);
                     break;
-                case "ID_desc":
+                case "id_desc":
                     teamIQ = teamIQ.OrderByDescending(t => t.teamID);
                     break;
-                case "ExpPTS":
+                case "exppts":
                     teamIQ = teamIQ.OrderByDescending(t => t.ExpPTS);
                     break;
                 case "exppts_desc":
                     teamIQ = teamIQ.OrderBy(t => t.ExpPTS);
                     break;
-                case "AvgPTS":
+                case "avgpts":
                     teamIQ = teamIQ.OrderByDescending(t => t.AvgPTS);
                     break;
                 case "avgpts_desc":
                     teamIQ = teamIQ.OrderBy(t => t.AvgPTS);
                     break;
-                case "OPR":
+                case "opr":
                     teamIQ = teamIQ.OrderByDescending(t => t.OPR);
                     break;
                 case "opr_desc":

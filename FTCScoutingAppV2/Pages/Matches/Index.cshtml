@@ -24,13 +24,19 @@
     <thead>
         <tr>
             <th style="background-color:dimgray; color:white;">
-                Nr
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.NrSort">
+                    Nr
+                </a>
             </th>
             <th style="background-color:dimgray; color:white;">
-                Type
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.TypeSort">
+                    Type
+                </a>
             </th>
             <th style="background-color:red; color:white;">
-                PTS
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.PointsSort">
+                    PTS
+                </a>
             </th>
             <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
                 Gold
