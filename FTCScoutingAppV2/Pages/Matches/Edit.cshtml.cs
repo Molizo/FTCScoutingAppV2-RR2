@@ -23,14 +23,14 @@ namespace FTCScoutingAppV2.Pages.Matches
         [BindProperty]
         public Match Match { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? matchID)
         {
-            if (id == null)
+            if (matchID == null)
             {
                 return NotFound();
             }
 
-            Match = await _context.Match.FirstOrDefaultAsync(m => m.ID == id);
+            Match = await _context.Match.FirstOrDefaultAsync(m => m.ID == matchID);
 
             if (Match == null)
             {
@@ -89,9 +89,9 @@ namespace FTCScoutingAppV2.Pages.Matches
             return RedirectToPage("/Events/Index");
         }
 
-        private bool MatchExists(int id)
+        private bool MatchExists(int matchID)
         {
-            return _context.Match.Any(e => e.ID == id);
+            return _context.Match.Any(e => e.teamID == matchID.ToString());
         }
     }
 }

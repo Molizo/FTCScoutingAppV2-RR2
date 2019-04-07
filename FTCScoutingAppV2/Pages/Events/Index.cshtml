@@ -32,8 +32,8 @@
                 @Html.DisplayFor(modelItem => item.eventLocation)
             </td>
             <td>
-                <a asp-page="/Teams/Index" asp-route-id="@item.ID">Teams</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a> |
+                <a asp-page="./Delete" asp-route-eventID="@item.ID">Delete</a>
             </td>
         </tr>
 }

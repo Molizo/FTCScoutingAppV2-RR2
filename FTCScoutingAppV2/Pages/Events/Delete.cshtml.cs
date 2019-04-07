@@ -22,14 +22,14 @@ namespace FTCScoutingAppV2.Pages.Events
         [BindProperty]
         public Event Event { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? eventID)
         {
-            if (id == null)
+            if (eventID == null)
             {
                 return NotFound();
             }
 
-            Event = await _context.Event.FirstOrDefaultAsync(m => m.ID == id);
+            Event = await _context.Event.FirstOrDefaultAsync(m => m.ID == eventID);
 
             if (Event == null)
             {
@@ -38,14 +38,14 @@ namespace FTCScoutingAppV2.Pages.Events
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int? eventID)
         {
-            if (id == null)
+            if (eventID == null)
             {
                 return NotFound();
             }
 
-            Event = await _context.Event.FindAsync(id);
+            Event = await _context.Event.FindAsync(eventID);
 
             if (Event != null)
             {

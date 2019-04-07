@@ -9,37 +9,37 @@
 <h2>Teams</h2>
 <p class="hidden-mobile">
     Teams for event @Model.eventName | @Html.DisplayFor(model => model.Teams.Count) teams |
-    <a asp-page="Create" asp-route-id="@Model.routingID">Add a team</a>
+    <a asp-page="Create" asp-route-id="@Model.eventRoutingID">Add a team</a>
 </p>
 <p class="hidden-tablet hidden-desktop">
     Event @Model.eventName | 
-    <a asp-page="Create" asp-route-id="@Model.routingID">Add a team</a>
+    <a asp-page="Create" asp-route-id="@Model.eventRoutingID">Add a team</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.IDSort" asp-route-id=@Model.routingID>
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.IDSort" >
                     ID
                 </a>
             </th>
             <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-id=@Model.routingID>
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.NameSort" >
                     Name
                 </a>
             </th>
             <th class="hidden-mobile" style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.ExpPTSSort" asp-route-id=@Model.routingID>
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.ExpPTSSort">
                     Exp PTS
                 </a>
             </th>
             <th class="hidden-mobile" style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.AvgPTSSort" asp-route-id=@Model.routingID>
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.AvgPTSSort">
                     Avg PTS
                 </a>
             </th>
             <th class="hidden-mobile" style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.OPRSort" asp-route-id=@Model.routingID>
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.OPRSort">
                     OPR
                 </a>
             </th>
@@ -132,10 +132,10 @@
                 @Html.DisplayFor(modelItem => team.endLocation)
             </td>
             <td width="103px">
-                <a asp-page="/Matches/Index" asp-route-id="@team.ID">M</a> |
-                <a asp-page="./Edit" asp-route-id="@team.ID">E</a> |
-                <a asp-page="./Details" asp-route-id="@team.ID">D</a> |
-                <a asp-page="./Delete" asp-route-id="@team.ID">R</a>
+                <a asp-page="/Matches/Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID">M</a> |
+                <a asp-page="./Edit" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID">E</a> |
+                <a asp-page="./Details" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID">D</a> |
+                <a asp-page="./Delete" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID">R</a>
             </td>
         </tr>
 }
@@ -144,4 +144,4 @@
 <strong>M-Matches E-Edit D-Details R-Remove</strong>
 <br />
 <strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy</strong>
-<a asp-page="Create" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add team</a>
+<a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:absolute; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add team</a>

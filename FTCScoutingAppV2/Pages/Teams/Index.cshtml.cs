@@ -24,8 +24,9 @@ namespace FTCScoutingAppV2.Pages.Teams
         public IList<Team> Teams { get;set; }
         public IList<Match> Matches { get; set; }
         public IList<Team> AllTeams { get;set; }
+
         public string AllowedUserIDs { get;set;}
-        public string routingID { get;set; }
+        public string eventID { get;set; }
         public string eventName { get;set; }
 
         public string NameSort { get; set; }
@@ -36,18 +37,21 @@ namespace FTCScoutingAppV2.Pages.Teams
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync(string sortOrder)
+        public string eventRoutingID { get;set; }
+
+        public async Task OnGetAsync(string eventID,string sortOrder)
         {
             AllTeams = await _context.Team.ToListAsync();
             Events = await _context.Event.ToListAsync();
             Matches = await _context.Match.ToListAsync();
             Teams = new List<Team>();
             AllowedUserIDs = String.Empty;
-            eventName = String.Empty;
-            routingID = HttpContext.Request.Query["id"];
+
+            eventRoutingID = eventID;
+
             foreach(var team in AllTeams)
             {
-                if(team.eventID == routingID)
+                if(team.eventID == eventID)
                 {
                     Teams.Add(team);
                     UInt64 totalPoints=0,nrOfMatches=0;
@@ -63,17 +67,16 @@ namespace FTCScoutingAppV2.Pages.Teams
                         team.AvgPTS = totalPoints / nrOfMatches;
                 }
             }
-            foreach(var item in Events)
-            {
-                if(item.ID.ToString() == routingID)
-                {
-                    eventName = item.eventName;
-                    AllowedUserIDs = item.allowedUserIDs;
-                }
-            }
 
-            if(eventName == String.Empty)
-                throw new Exception("Cannot retrieve teams for event with ID" + routingID);
+            try
+            {
+                var currentEvent = Events.Where(item => item.ID == Int32.Parse(eventID)).ToList();
+                eventName = currentEvent[0].eventName;
+            }
+            catch
+            {
+                throw new Exception("Cannot retrieve teams for event with ID " + eventID);
+            }
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             IDSort = sortOrder == "TeamID" ? "ID_desc" : "TeamID";

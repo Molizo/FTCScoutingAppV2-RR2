@@ -23,14 +23,14 @@ namespace FTCScoutingAppV2.Pages.Teams
         [BindProperty]
         public Team Team { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? teamID)
         {
-            if (id == null)
+            if (teamID == null)
             {
                 return NotFound();
             }
 
-            Team = await _context.Team.FirstOrDefaultAsync(m => m.ID == id);
+            Team = await _context.Team.FirstOrDefaultAsync(m => m.ID == teamID);
 
             if (Team == null)
             {
@@ -89,9 +89,9 @@ namespace FTCScoutingAppV2.Pages.Teams
             return RedirectToPage("/Events/Index");
         }
 
-        private bool TeamExists(int id)
+        private bool TeamExists(int teamID)
         {
-            return _context.Team.Any(e => e.ID == id);
+            return _context.Team.Any(e => e.ID == teamID);
         }
     }
 }

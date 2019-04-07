@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using System;
 
 namespace FTCScoutingAppV2.Pages.Matches
 {
@@ -18,25 +20,31 @@ namespace FTCScoutingAppV2.Pages.Matches
         public IList<Match> AllMatches { get; set; }
         public IList<Team> Teams { get; set; }
         public IList<Match> Matches { get; set; }
-        public string routingID { get; set; }
-        public string teamID { get;set;}
 
-        public async Task OnGetAsync()
+        public string eventRoutingID { get; set; }
+        public string teamRoutingID { get; set; }
+
+        public string teamNumber { get; set; }
+
+        public async Task OnGetAsync(string eventID,string teamID,string sortOrder)
         {
             AllMatches = await _context.Match.ToListAsync();
             Teams = await _context.Team.ToListAsync();
             Matches = new List<Match>();
-            routingID = HttpContext.Request.Query["id"];
-            teamID = string.Empty;
-            foreach (var match in AllMatches)
+
+            eventRoutingID = eventID;
+            teamRoutingID = teamID;
+
+            Matches = AllMatches.Where(match => match.teamID == teamID).ToList();
+
+            try
             {
-                if (match.teamID == routingID)
-                    Matches.Add(match);
+                var currentTeam = Teams.Where(item => item.ID == Int32.Parse(teamID)).ToList();
+                teamNumber = currentTeam[0].teamID;
             }
-            foreach (var team in Teams)
+            catch
             {
-                if (team.ID.ToString() == routingID)
-                    teamID = team.teamID;
+                throw new Exception("Cannot retrieve matches for team with ID " + eventID);
             }
         }
     }

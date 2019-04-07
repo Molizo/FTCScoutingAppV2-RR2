@@ -33,7 +33,7 @@ namespace FTCScoutingAppV2.Pages.Matches
             {
                 return Page();
             }
-            Match.teamID = HttpContext.Request.Query["id"];
+            Match.teamID = HttpContext.Request.Query["teamID"];
 
             UInt64 points = 0;
             if (Match.landing == true)

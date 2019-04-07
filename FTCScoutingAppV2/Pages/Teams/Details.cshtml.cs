@@ -20,20 +20,24 @@ namespace FTCScoutingAppV2.Pages.Teams
         }
 
         public Team Team { get; set; }
+        public string eventID { get;set;}
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? teamID)
         {
-            if (id == null)
+            if (teamID == null)
             {
                 return NotFound();
             }
 
-            Team = await _context.Team.FirstOrDefaultAsync(m => m.ID == id);
+            Team = await _context.Team.FirstOrDefaultAsync(m => m.ID == teamID);
 
             if (Team == null)
             {
                 return NotFound();
             }
+
+            eventID = HttpContext.Request.Query["eventID"];
+
             return Page();
         }
     }
