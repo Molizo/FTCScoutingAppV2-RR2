@@ -28,7 +28,15 @@ namespace FTCScoutingAppV2.Pages.Teams
         public string routingID { get;set; }
         public string eventName { get;set; }
 
-        public async Task OnGetAsync()
+        public string NameSort { get; set; }
+        public string IDSort { get; set; }
+        public string ExpPTSSort { get; set; }
+        public string AvgPTSSort { get; set; }
+        public string OPRSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+        public async Task OnGetAsync(string sortOrder)
         {
             AllTeams = await _context.Team.ToListAsync();
             Events = await _context.Event.ToListAsync();
@@ -66,6 +74,50 @@ namespace FTCScoutingAppV2.Pages.Teams
 
             if(eventName == String.Empty)
                 throw new Exception("Cannot retrieve teams for event with ID" + routingID);
+
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            IDSort = sortOrder == "TeamID" ? "ID_desc" : "TeamID";
+            ExpPTSSort = sortOrder == "ExpPTS" ? "exppts_desc" : "ExpPTS";
+            AvgPTSSort = sortOrder == "AvgPTS" ? "avgpts_desc" : "AvgPTS";
+            OPRSort = sortOrder == "OPR" ? "opr_desc" : "OPR";
+
+            IQueryable<Team> teamIQ = Teams.AsQueryable();
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    teamIQ = teamIQ.OrderByDescending(t => t.teamName);
+                    break;
+                case "TeamID":
+                    teamIQ = teamIQ.OrderBy(t => t.teamID);
+                    break;
+                case "ID_desc":
+                    teamIQ = teamIQ.OrderByDescending(t => t.teamID);
+                    break;
+                case "ExpPTS":
+                    teamIQ = teamIQ.OrderByDescending(t => t.ExpPTS);
+                    break;
+                case "exppts_desc":
+                    teamIQ = teamIQ.OrderBy(t => t.ExpPTS);
+                    break;
+                case "AvgPTS":
+                    teamIQ = teamIQ.OrderByDescending(t => t.AvgPTS);
+                    break;
+                case "avgpts_desc":
+                    teamIQ = teamIQ.OrderBy(t => t.AvgPTS);
+                    break;
+                case "OPR":
+                    teamIQ = teamIQ.OrderByDescending(t => t.OPR);
+                    break;
+                case "opr_desc":
+                    teamIQ = teamIQ.OrderBy(t => t.OPR);
+                    break;
+                default:
+                    teamIQ = teamIQ.OrderBy(t => t.teamName);
+                    break;
+            }
+
+            Teams = teamIQ.AsNoTracking().ToList();
         }
     }
 }

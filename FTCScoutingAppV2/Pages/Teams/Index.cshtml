@@ -19,19 +19,29 @@
     <thead>
         <tr>
             <th style="background-color:dimgray; color:white;">
-                ID
+                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.IDSort" asp-route-id=@Model.routingID>
+                    ID
+                </a>
             </th>
             <th style="background-color:dimgray; color:white;">
-                Name
+                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.NameSort" asp-route-id=@Model.routingID>
+                    Name
+                </a>
             </th>
             <th class="hidden-mobile" style="background-color:red; color:white;">
-                Exp PTS
+                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.ExpPTSSort" asp-route-id=@Model.routingID>
+                    Exp PTS
+                </a>
             </th>
             <th class="hidden-mobile" style="background-color:red; color:white;">
-                Avg PTS
+                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.AvgPTSSort" asp-route-id=@Model.routingID>
+                    Avg PTS
+                </a>
             </th>
             <th class="hidden-mobile" style="background-color:red; color:white;">
-                OPR
+                <a style="color:white;" asp-page="./Index" asp-route-sortOrder="@Model.OPRSort" asp-route-id=@Model.routingID>
+                    OPR
+                </a>
             </th>
             <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
                 Gold
