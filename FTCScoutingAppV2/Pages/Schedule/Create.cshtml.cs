@@ -38,13 +38,12 @@ namespace FTCScoutingAppV2.Pages.Schedule
 
         public async Task<IActionResult> OnPostAsync()
         {
+            MatchList.eventID = HttpContext.Request.Query["eventID"];
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
-            MatchList.eventID = eventID;
-
             _context.MatchList.Add(MatchList);
             await _context.SaveChangesAsync();
 

@@ -6,33 +6,42 @@
 }
 
 <h2>Schedule</h2>
-
+<meta http-equiv="refresh" content="60">
 <p>
     <a asp-page="Create" asp-route-eventID="@Model.eventID">Add a match to the schedule</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th style="background-color:dimgray; color:white;">
+            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].matchNumber)
             </th>
-            <th style="background-color:red; color:white;">
+            <th class="hidden-tablet hidden-desktop" style="background-color:dimgray; color:white;">
+                Nr
+            </th>
+            <th class="hidden-mobile" style="background-color:red; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedTeam1ID)
             </th>
-            <th style="background-color:red; color:white;">
+            <th class="hidden-mobile" style="background-color:red; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedTeam2ID)
             </th>
-            <th style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].BlueTeam1ID)
             </th>
-            <th style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].BlueTeam2ID)
             </th>
-            <th style="background-color:red; color:white;">
+            <th class="hidden-mobile" style="background-color:red; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedScore)
             </th>
-            <th style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="background-color:blue; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].BlueScore)
+            </th>
+            <th class="hidden-tablet hidden-desktop" style="background-color:red; color:white;">
+                Red
+            </th>
+            <th class="hidden-tablet hidden-desktop" style="background-color:blue; color:white;">
+                Blue
             </th>
             <th style="background-color:dimgray; color:white;">
                 Options
@@ -45,7 +54,7 @@
             <td>
                 @match.matchNumber
             </td>
-            <td>
+            <td class="hidden-mobile">
                 @foreach (var team in Model.Teams)
                 {
                     if (team.ID == match.RedTeam1ID)
@@ -54,7 +63,7 @@
                     }
                 }
             </td>
-            <td>
+            <td class="hidden-mobile">
                 @foreach (var team in Model.Teams)
                 {
                     if (team.ID == match.RedTeam2ID)
@@ -63,7 +72,7 @@
                     }
                 }
             </td>
-            <td>
+            <td class="hidden-mobile">
                 @foreach (var team in Model.Teams)
                 {
                     if (team.ID == match.BlueTeam1ID)
@@ -72,7 +81,7 @@
                     }
                 }
             </td>
-            <td>
+            <td class="hidden-mobile">
                 @foreach (var team in Model.Teams)
                 {
                     if (team.ID == match.BlueTeam2ID)
@@ -87,11 +96,15 @@
             <td>
                 @Html.DisplayFor(matchList => match.BlueScore)
             </td>
-            <td>
+            <td class="hidden-mobile">
                 <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Edit</a> |
                 <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Delete</a>
+            </td>
+            <td class="hidden-tablet hidden-desktop">
+                <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Edit</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<a asp-page="Create" asp-route-eventID="@Model.eventID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match to schedule</a>

@@ -4,7 +4,8 @@
 @{
     ViewData["Title"] = "Events";
 }
-    <meta http-equiv="refresh" content="10">
+    
+<meta http-equiv="refresh" content="60">
 <h2>Events</h2>
 
 <p>
@@ -16,7 +17,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Event[0].eventName)
             </th>
-            <th>
+            <th class="hidden-mobile">
                 @Html.DisplayNameFor(model => model.Event[0].eventLocation)
             </th>
             <th></th>
@@ -28,13 +29,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.eventName)
             </td>
-            <td>
+            <td class="hidden-mobile">
                 @Html.DisplayFor(modelItem => item.eventLocation)
             </td>
-            <td>
+            <td class="hidden-mobile">
                 <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a> |
                 <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a> |
                 <a asp-page="./Delete" asp-route-eventID="@item.ID">Delete</a>
+            </td>
+            <td class="hidden-tablet hidden-desktop">
+                <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a>
+                <br />
+                <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a>
             </td>
         </tr>
 }
