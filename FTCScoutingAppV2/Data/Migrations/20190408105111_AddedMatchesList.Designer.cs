@@ -4,14 +4,16 @@ using FTCScoutingAppV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FTCScoutingAppV2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190408105111_AddedMatchesList")]
+    partial class AddedMatchesList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,33 +84,6 @@ namespace FTCScoutingAppV2.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Match");
-                });
-
-            modelBuilder.Entity("FTCScoutingAppV2.Models.MatchList", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("BlueScore")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.Property<int>("BlueTeam1ID");
-
-                    b.Property<int>("BlueTeam2ID");
-
-                    b.Property<decimal>("RedScore")
-                        .HasConversion(new ValueConverter<decimal, decimal>(v => default(decimal), v => default(decimal), new ConverterMappingHints(precision: 20, scale: 0)));
-
-                    b.Property<int>("RedTeam1ID");
-
-                    b.Property<int>("RedTeam2ID");
-
-                    b.Property<string>("eventID");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("MatchList");
                 });
 
             modelBuilder.Entity("FTCScoutingAppV2.Models.Team", b =>

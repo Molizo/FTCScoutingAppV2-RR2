@@ -1,0 +1,91 @@
+﻿@page
+@model FTCScoutingAppV2.Pages.Schedule.IndexModel
+
+@{
+    ViewData["Title"] = "Schedule";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create" asp-route-eventID="@Model.eventID">Add a match to the schedule</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="background-color:red; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].RedTeam1ID)
+            </th>
+            <th style="background-color:red; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].RedTeam2ID)
+            </th>
+            <th style="background-color:blue; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].BlueTeam1ID)
+            </th>
+            <th style="background-color:blue; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].BlueTeam2ID)
+            </th>
+            <th style="background-color:red; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].RedScore)
+            </th>
+            <th style="background-color:blue; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].BlueScore)
+            </th>
+            <th style="background-color:dimgray; color:white;">
+                Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var match in Model.MatchList) {
+        <tr>
+            <td>
+                @foreach (var team in Model.Teams)
+                {
+                    if (team.ID == match.RedTeam1ID)
+                    {
+                        @team.teamID
+                    }
+                }
+            </td>
+            <td>
+                @foreach (var team in Model.Teams)
+                {
+                    if (team.ID == match.RedTeam2ID)
+                    {
+                        @team.teamID
+                    }
+                }
+            </td>
+            <td>
+                @foreach (var team in Model.Teams)
+                {
+                    if (team.ID == match.BlueTeam1ID)
+                    {
+                        @team.teamID
+                    }
+                }
+            </td>
+            <td>
+                @foreach (var team in Model.Teams)
+                {
+                    if (team.ID == match.BlueTeam2ID)
+                    {
+                        @team.teamID
+                    }
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(matchList => match.RedScore)
+            </td>
+            <td>
+                @Html.DisplayFor(matchList => match.BlueScore)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduleID="@match.ID">Edit</a> |
+                <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduleID="@match.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
