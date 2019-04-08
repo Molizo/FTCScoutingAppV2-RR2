@@ -10,11 +10,11 @@ namespace FTCScoutingAppV2.Models
     {
         [Key]
         public int ID { get;set;}
-        
-        [Display(Name ="Match type",ShortName ="Type")]
-        public MatchTypes? matchType { get;set;}
-        [Display(Name ="Match number",ShortName ="Nr")]
-        public string matchNumber { get;set;}
+
+        [Display(Name = "Match type", ShortName = "Type")]
+        public MatchTypes? matchType { get; set; }
+        [Display(Name = "Match number", ShortName = "Nr")]
+        public string matchNumber { get; set; }
 
         [Display(Name = "Alliance", ShortName = "Alc")]
         public Alliances? alliance { get; set; }

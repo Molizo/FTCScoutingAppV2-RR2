@@ -5,7 +5,7 @@
     ViewData["Title"] = "Schedule";
 }
 
-<h2>Index</h2>
+<h2>Schedule</h2>
 
 <p>
     <a asp-page="Create" asp-route-eventID="@Model.eventID">Add a match to the schedule</a>
@@ -82,8 +82,8 @@
                 @Html.DisplayFor(matchList => match.BlueScore)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduleID="@match.ID">Edit</a> |
-                <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduleID="@match.ID">Delete</a>
+                <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Edit</a> |
+                <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Delete</a>
             </td>
         </tr>
 }

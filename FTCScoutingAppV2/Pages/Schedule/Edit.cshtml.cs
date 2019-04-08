@@ -23,19 +23,24 @@ namespace FTCScoutingAppV2.Pages.Schedule
         [BindProperty]
         public MatchList MatchList { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public string eventID { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? scheduledMatchID)
         {
-            if (id == null)
+            if (scheduledMatchID == null)
             {
                 return NotFound();
             }
 
-            MatchList = await _context.MatchList.FirstOrDefaultAsync(m => m.ID == id);
+            MatchList = await _context.MatchList.FirstOrDefaultAsync(m => m.ID == scheduledMatchID);
 
             if (MatchList == null)
             {
                 return NotFound();
             }
+
+            eventID = HttpContext.Request.Query["eventID"];
+
             return Page();
         }
 
@@ -67,9 +72,9 @@ namespace FTCScoutingAppV2.Pages.Schedule
             return RedirectToPage("./Index");
         }
 
-        private bool MatchListExists(int id)
+        private bool MatchListExists(int scheduledMatchID)
         {
-            return _context.MatchList.Any(e => e.ID == id);
+            return _context.MatchList.Any(e => e.ID == scheduledMatchID);
         }
     }
 }

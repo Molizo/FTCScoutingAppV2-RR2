@@ -7,33 +7,17 @@
 
 <h2>Edit</h2>
 
-<h4>MatchList</h4>
+<h4>Match in schedule</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MatchList.ID" />
-            <div class="form-group">
-                <label asp-for="MatchList.RedTeam1ID" class="control-label"></label>
-                <input asp-for="MatchList.RedTeam1ID" class="form-control" />
-                <span asp-validation-for="MatchList.RedTeam1ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MatchList.RedTeam2ID" class="control-label"></label>
-                <input asp-for="MatchList.RedTeam2ID" class="form-control" />
-                <span asp-validation-for="MatchList.RedTeam2ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MatchList.BlueTeam1ID" class="control-label"></label>
-                <input asp-for="MatchList.BlueTeam1ID" class="form-control" />
-                <span asp-validation-for="MatchList.BlueTeam1ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MatchList.BlueTeam2ID" class="control-label"></label>
-                <input asp-for="MatchList.BlueTeam2ID" class="form-control" />
-                <span asp-validation-for="MatchList.BlueTeam2ID" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="MatchList.RedTeam1ID" />
+            <input type="hidden" asp-for="MatchList.RedTeam2ID" />
+            <input type="hidden" asp-for="MatchList.BlueTeam1ID" />
+            <input type="hidden" asp-for="MatchList.BlueTeam2ID" />
             <div class="form-group">
                 <label asp-for="MatchList.RedScore" class="control-label"></label>
                 <input asp-for="MatchList.RedScore" class="form-control" />
@@ -52,7 +36,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Events/Index">Back to schedule</a>
 </div>
 
 @section Scripts {

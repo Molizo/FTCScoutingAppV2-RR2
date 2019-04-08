@@ -12,6 +12,9 @@ namespace FTCScoutingAppV2.Models
         public int ID { get;set;}
         public string eventID { get;set;}
 
+        [Display(Name = "Match number")]
+        public string matchNumber { get; set; }
+
         [Display(Name ="Red team 1")]
         public int RedTeam1ID { get; set; }
         [Display(Name = "Red team 2")]

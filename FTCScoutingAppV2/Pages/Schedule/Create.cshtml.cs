@@ -46,7 +46,7 @@ namespace FTCScoutingAppV2.Pages.Schedule
             _context.MatchList.Add(MatchList);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Events/Index");
         }
     }
 }

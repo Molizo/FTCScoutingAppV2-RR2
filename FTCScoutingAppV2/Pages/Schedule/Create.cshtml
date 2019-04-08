@@ -7,7 +7,7 @@
 
 <h2>Create</h2>
 
-<h4>MatchList</h4>
+<h4>Match in schedule</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,7 +16,9 @@
             <div class="form-group">
                 <label asp-for="MatchList.RedTeam1ID" class="control-label"></label>
                 <select asp-for="MatchList.RedTeam1ID">
-                    @foreach(var team in Model.Teams)
+
+                    <option value="0">Select team</option>
+                    @foreach (var team in Model.Teams)
                     {
                         <option value="@team.ID">@team.teamID | @team.teamName</option>
                     }
@@ -26,6 +28,7 @@
             <div class="form-group">
                 <label asp-for="MatchList.RedTeam2ID" class="control-label"></label>
                 <select asp-for="MatchList.RedTeam2ID">
+                    <option value="0">Select team</option>
                     @foreach (var team in Model.Teams)
                     {
                         <option value="@team.ID">@team.teamID | @team.teamName</option>
@@ -36,6 +39,7 @@
             <div class="form-group">
                 <label asp-for="MatchList.BlueTeam1ID" class="control-label"></label>
                 <select asp-for="MatchList.BlueTeam1ID">
+                    <option value="0">Select team</option>
                     @foreach (var team in Model.Teams)
                     {
                         <option value="@team.ID">@team.teamID | @team.teamName</option>
@@ -46,6 +50,7 @@
             <div class="form-group">
                 <label asp-for="MatchList.BlueTeam2ID" class="control-label"></label>
                 <select asp-for="MatchList.BlueTeam2ID">
+                    <option value="0">Select team</option>
                     @foreach (var team in Model.Teams)
                     {
                         <option value="@team.ID">@team.teamID | @team.teamName</option>
@@ -71,7 +76,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Back to schedule</a>
 </div>
 
 @section Scripts {
