@@ -69,7 +69,7 @@ namespace FTCScoutingAppV2.Pages.Schedule
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Events/Index");
         }
 
         private bool MatchListExists(int scheduledMatchID)

@@ -14,10 +14,16 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MatchList.ID" />
+            <input type="hidden" asp-for="MatchList.eventID" />
             <input type="hidden" asp-for="MatchList.RedTeam1ID" />
             <input type="hidden" asp-for="MatchList.RedTeam2ID" />
             <input type="hidden" asp-for="MatchList.BlueTeam1ID" />
             <input type="hidden" asp-for="MatchList.BlueTeam2ID" />
+            <div class="form-group">
+                <label asp-for="MatchList.matchNumber" class="control-label"></label>
+                <input asp-for="MatchList.matchNumber" class="form-control" />
+                <span asp-validation-for="MatchList.matchNumber" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="MatchList.RedScore" class="control-label"></label>
                 <input asp-for="MatchList.RedScore" class="form-control" />

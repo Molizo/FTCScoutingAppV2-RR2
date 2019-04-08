@@ -43,6 +43,8 @@ namespace FTCScoutingAppV2.Pages.Schedule
                 return Page();
             }
 
+            MatchList.eventID = eventID;
+
             _context.MatchList.Add(MatchList);
             await _context.SaveChangesAsync();
 

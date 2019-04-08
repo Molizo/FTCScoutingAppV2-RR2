@@ -13,6 +13,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th style="background-color:dimgray; color:white;">
+                @Html.DisplayNameFor(match => match.MatchList[0].matchNumber)
+            </th>
             <th style="background-color:red; color:white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedTeam1ID)
             </th>
@@ -39,6 +42,9 @@
     <tbody>
 @foreach (var match in Model.MatchList) {
         <tr>
+            <td>
+                @match.matchNumber
+            </td>
             <td>
                 @foreach (var team in Model.Teams)
                 {
