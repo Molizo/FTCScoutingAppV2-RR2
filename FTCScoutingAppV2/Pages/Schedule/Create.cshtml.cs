@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FTCScoutingAppV2.Data;
 using FTCScoutingAppV2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FTCScoutingAppV2.Pages.Schedule
 {
@@ -24,6 +25,10 @@ namespace FTCScoutingAppV2.Pages.Schedule
             AllTeams = _context.Team.ToList();
             eventID = HttpContext.Request.Query["eventID"];
             Teams = AllTeams.Where(team => team.eventID == eventID).ToList();
+
+            IQueryable<Team> teamIQ = Teams.AsQueryable();
+            teamIQ = teamIQ.OrderBy(t => t.teamID);
+            Teams = teamIQ.AsNoTracking().ToList();
 
             return Page();
         }
