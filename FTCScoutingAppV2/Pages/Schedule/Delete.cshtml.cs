@@ -21,9 +21,11 @@ namespace FTCScoutingAppV2.Pages.Schedule
 
         [BindProperty]
         public MatchList MatchList { get; set; }
+        public string eventID { get;set;}
 
         public async Task<IActionResult> OnGetAsync(int? scheduledMatchID)
         {
+            eventID = HttpContext.Request.Query["eventID"];
             if (scheduledMatchID == null)
             {
                 return NotFound();
