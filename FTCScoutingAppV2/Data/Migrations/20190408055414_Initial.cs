@@ -5,6 +5,20 @@ namespace FTCScoutingAppV2.Data.Migrations
 {
     public partial class Initial : Migration
     {
+        #region Protected Methods
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Event");
+
+            migrationBuilder.DropTable(
+                name: "Match");
+
+            migrationBuilder.DropTable(
+                name: "Team");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -82,16 +96,6 @@ namespace FTCScoutingAppV2.Data.Migrations
                 });
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "Event");
-
-            migrationBuilder.DropTable(
-                name: "Match");
-
-            migrationBuilder.DropTable(
-                name: "Team");
-        }
+        #endregion Protected Methods
     }
 }

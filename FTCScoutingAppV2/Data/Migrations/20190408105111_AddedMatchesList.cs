@@ -4,14 +4,16 @@ namespace FTCScoutingAppV2.Data.Migrations
 {
     public partial class AddedMatchesList : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-
-        }
+        #region Protected Methods
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
         }
+
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+        }
+
+        #endregion Protected Methods
     }
 }

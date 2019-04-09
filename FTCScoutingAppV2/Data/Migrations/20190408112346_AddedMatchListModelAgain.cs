@@ -5,6 +5,14 @@ namespace FTCScoutingAppV2.Data.Migrations
 {
     public partial class AddedMatchListModelAgain : Migration
     {
+        #region Protected Methods
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "MatchList");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -26,10 +34,6 @@ namespace FTCScoutingAppV2.Data.Migrations
                 });
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "MatchList");
-        }
+        #endregion Protected Methods
     }
 }

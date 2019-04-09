@@ -12,19 +12,19 @@
     <a asp-page="Create" asp-route-id="@Model.eventRoutingID">Add a team</a>
 </p>
 <p class="hidden-tablet hidden-desktop">
-    Event @Model.eventName | 
+    Event @Model.eventName |
     <a asp-page="Create" asp-route-id="@Model.eventRoutingID">Add a team</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.IDSort" >
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.IDSort">
                     ID
                 </a>
             </th>
             <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.NameSort" >
+                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.NameSort">
                     Name
                 </a>
             </th>
@@ -138,8 +138,8 @@
                 <a asp-page="./Delete" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID">R</a>
             </td>
         </tr>
-}
-</tbody>
+        }
+    </tbody>
 </table>
 <strong>M-Matches E-Edit D-Details R-Remove</strong>
 <br />

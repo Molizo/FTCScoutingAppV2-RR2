@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var match in Model.MatchList) {
+        @foreach (var match in Model.MatchList) {
         <tr>
             <td>
                 @match.matchNumber
@@ -59,7 +59,7 @@
                 {
                     if (team.ID == match.RedTeam1ID)
                     {
-                        @team.teamID
+                @team.teamID
                     }
                 }
             </td>
@@ -68,7 +68,7 @@
                 {
                     if (team.ID == match.RedTeam2ID)
                     {
-                        @team.teamID
+                @team.teamID
                     }
                 }
             </td>
@@ -77,7 +77,7 @@
                 {
                     if (team.ID == match.BlueTeam1ID)
                     {
-                        @team.teamID
+                @team.teamID
                     }
                 }
             </td>
@@ -86,7 +86,7 @@
                 {
                     if (team.ID == match.BlueTeam2ID)
                     {
-                        @team.teamID
+                @team.teamID
                     }
                 }
             </td>

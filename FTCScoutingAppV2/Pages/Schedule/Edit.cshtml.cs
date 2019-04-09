@@ -1,29 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FTCScoutingAppV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Schedule
 {
     public class EditModel : PageModel
     {
+        #region Private Fields
+
         private readonly FTCScoutingAppV2.Data.ApplicationDbContext _context;
+
+        #endregion Private Fields
+
+        #region Public Constructors
 
         public EditModel(FTCScoutingAppV2.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
+        #endregion Public Constructors
+
+        #region Public Properties
+
+        public string eventID { get; set; }
+
         [BindProperty]
         public MatchList MatchList { get; set; }
 
-        public string eventID { get; set; }
+        #endregion Public Properties
+
+        #region Public Methods
 
         public async Task<IActionResult> OnGetAsync(int? scheduledMatchID)
         {
@@ -72,9 +82,15 @@ namespace FTCScoutingAppV2.Pages.Schedule
             return RedirectToPage("/Events/Index");
         }
 
+        #endregion Public Methods
+
+        #region Private Methods
+
         private bool MatchListExists(int scheduledMatchID)
         {
             return _context.MatchList.Any(e => e.ID == scheduledMatchID);
         }
+
+        #endregion Private Methods
     }
 }

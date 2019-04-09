@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Events";
 }
-    
+
 <meta http-equiv="refresh" content="60">
 <h2>Events</h2>
 
@@ -24,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Event) {
+        @foreach (var item in Model.Event) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.eventName)

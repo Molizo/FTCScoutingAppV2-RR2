@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FTCScoutingAppV2.Models
 {
     public class Event
     {
-        [Key]
-        public int ID { get;set;}
+        #region Public Properties
+
+        public string allowedUserIDs { get; set; }
+
+        [Display(Name = "Event location")]
+        public string eventLocation { get; set; }
 
         [Display(Name = "Event name")]
-        public string eventName { get;set;}
-        [Display(Name = "Event location")]
-        public string eventLocation { get;set;}
-        
-        public string allowedUserIDs { get;set;}
+        public string eventName { get; set; }
+
+        [Key]
+        public int ID { get; set; }
+
+        #endregion Public Properties
     }
 }

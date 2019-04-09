@@ -4,6 +4,15 @@ namespace FTCScoutingAppV2.Data.Migrations
 {
     public partial class AddedEventIDToMatchList : Migration
     {
+        #region Protected Methods
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "eventID",
+                table: "MatchList");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
@@ -12,11 +21,6 @@ namespace FTCScoutingAppV2.Data.Migrations
                 nullable: true);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "eventID",
-                table: "MatchList");
-        }
+        #endregion Protected Methods
     }
 }

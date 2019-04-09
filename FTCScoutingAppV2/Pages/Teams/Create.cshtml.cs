@@ -1,31 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FTCScoutingAppV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Teams
 {
     public class CreateModel : PageModel
     {
+        #region Private Fields
+
         private readonly FTCScoutingAppV2.Data.ApplicationDbContext _context;
+
+        #endregion Private Fields
+
+        #region Public Constructors
 
         public CreateModel(FTCScoutingAppV2.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
+        #endregion Public Constructors
+
+        #region Public Properties
+
+        [BindProperty]
+        public Team Team { get; set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
+
         public IActionResult OnGet()
         {
             return Page();
         }
-
-        [BindProperty]
-        public Team Team { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -36,7 +46,7 @@ namespace FTCScoutingAppV2.Pages.Teams
             Team.eventID = HttpContext.Request.Query["id"];
 
             UInt64 expPTS = 0;
-            if(Team.landing == true)
+            if (Team.landing == true)
                 expPTS += 30;
             if (Team.teamMarker == true)
                 expPTS += 15;
@@ -46,11 +56,11 @@ namespace FTCScoutingAppV2.Pages.Teams
                 expPTS += 25;
             if (Team.doubleSampling == true)
                 expPTS += 25;
-            if(Team.endLocation == EndLocations.Latched)
+            if (Team.endLocation == EndLocations.Latched)
                 expPTS += 50;
-            else if(Team.endLocation == EndLocations.Fully)
+            else if (Team.endLocation == EndLocations.Fully)
                 expPTS += 25;
-            else if(Team.endLocation == EndLocations.Partial)
+            else if (Team.endLocation == EndLocations.Partial)
                 expPTS += 15;
             expPTS += Team.goldMinerals * 5;
             expPTS += Team.silverMinerals * 5;
@@ -62,5 +72,7 @@ namespace FTCScoutingAppV2.Pages.Teams
 
             return RedirectToPage("/Events/Index");
         }
+
+        #endregion Public Methods
     }
 }

@@ -1,27 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FTCScoutingAppV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FTCScoutingAppV2.Data;
-using FTCScoutingAppV2.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FTCScoutingAppV2.Pages.Teams
 {
     public class EditModel : PageModel
     {
+        #region Private Fields
+
         private readonly FTCScoutingAppV2.Data.ApplicationDbContext _context;
+
+        #endregion Private Fields
+
+        #region Public Constructors
 
         public EditModel(FTCScoutingAppV2.Data.ApplicationDbContext context)
         {
             _context = context;
         }
 
+        #endregion Public Constructors
+
+        #region Public Properties
+
         [BindProperty]
         public Team Team { get; set; }
+
+        #endregion Public Properties
+
+        #region Public Methods
 
         public async Task<IActionResult> OnGetAsync(int? teamID)
         {
@@ -89,9 +100,15 @@ namespace FTCScoutingAppV2.Pages.Teams
             return RedirectToPage("/Events/Index");
         }
 
+        #endregion Public Methods
+
+        #region Private Methods
+
         private bool TeamExists(int teamID)
         {
             return _context.Team.Any(e => e.ID == teamID);
         }
+
+        #endregion Private Methods
     }
 }
