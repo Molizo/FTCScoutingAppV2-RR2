@@ -83,9 +83,18 @@
         @foreach (var team in Model.Teams)
         {
         <tr>
+            @if (team.startLocation.ToString() == String.Empty || team.endLocation.ToString() == String.Empty || team.ExpPTS == 0)
+                {
+            <td style="background-color:orange; color:white;">
+                @Html.DisplayFor(modelItem => team.teamID)
+            </td>
+                }
+                else
+                {
             <td>
                 @Html.DisplayFor(modelItem => team.teamID)
             </td>
+                }
             <td>
                 @Html.DisplayFor(modelItem => team.teamName)
             </td>
@@ -143,5 +152,5 @@
 </table>
 <strong>M-Matches E-Edit D-Details R-Remove</strong>
 <br />
-<strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy</strong>
+<strong>Gray-General information Red-Statistics Green-Minerals Blue-Autonomy Orange-Incomplete team</strong>
 <a asp-page="Create" asp-route-id="@Model.eventRoutingID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add team</a>
