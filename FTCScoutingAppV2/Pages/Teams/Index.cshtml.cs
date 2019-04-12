@@ -53,8 +53,8 @@ namespace FTCScoutingAppV2.Pages.Teams
 
         public void ComputeSort(string sortOrder)
         {
-            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            IDSort = sortOrder == "id" ? "id_desc" : "id";
+            NameSort = sortOrder == "name" ? "name_desc" : "name";
+            IDSort = String.IsNullOrEmpty(sortOrder) ? "id_desc" : "id";
             ExpPTSSort = sortOrder == "exppts" ? "exppts_desc" : "exppts";
             AvgPTSSort = sortOrder == "avgpts" ? "avgpts_desc" : "avgpts";
             OPRSort = sortOrder == "opr" ? "opr_desc" : "opr";
@@ -63,12 +63,12 @@ namespace FTCScoutingAppV2.Pages.Teams
 
             switch (sortOrder)
             {
-                case "name_desc":
-                    teamIQ = teamIQ.OrderByDescending(t => t.teamName);
+                case "name":
+                    teamIQ = teamIQ.OrderBy(t => t.teamName);
                     break;
 
-                case "id":
-                    teamIQ = teamIQ.OrderBy(t => t.teamID);
+                case "name_desc":
+                    teamIQ = teamIQ.OrderByDescending(t => t.teamName);
                     break;
 
                 case "id_desc":
@@ -100,7 +100,7 @@ namespace FTCScoutingAppV2.Pages.Teams
                     break;
 
                 default:
-                    teamIQ = teamIQ.OrderBy(t => t.teamName);
+                    teamIQ = teamIQ.OrderBy(t => t.teamID);
                     break;
             }
 
