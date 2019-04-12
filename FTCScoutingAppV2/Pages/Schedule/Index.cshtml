@@ -51,71 +51,70 @@
     <tbody>
         @foreach (var match in Model.MatchList)
         {
-        <tr>
-            @if (match.RedScore == 0 || match.BlueScore == 0 || match.RedTeam1ID.ToString() == "0" || match.RedTeam2ID.ToString() == "0" || match.BlueTeam1ID.ToString() == "0" || match.BlueTeam2ID.ToString() == "0")
+            <tr>
+                @if (match.RedScore == 0 || match.BlueScore == 0 || match.RedTeam1ID.ToString() == "0" || match.RedTeam2ID.ToString() == "0" || match.BlueTeam1ID.ToString() == "0" || match.BlueTeam2ID.ToString() == "0")
                 {
-            <td style="background-color:orange; color:white;">
-                @match.matchNumber
-            </td>
+                    <td style="background-color:orange; color:white;">
+                        @match.matchNumber
+                    </td>
                 }
                 else
                 {
-            <td>
-                @match.matchNumber
-            </td>
+                    <td>
+                        @match.matchNumber
+                    </td>
                 }
-            <td class="hidden-mobile">
-                @foreach (var team in Model.Teams)
+                <td class="hidden-mobile">
+                    @foreach (var team in Model.Teams)
                     {
                         if (team.ID == match.RedTeam1ID)
                         {
-                @team.teamID
+                            @team.teamID
                         }
                     }
-            </td>
-            <td class="hidden-mobile">
-                @foreach (var team in Model.Teams)
+                </td>
+                <td class="hidden-mobile">
+                    @foreach (var team in Model.Teams)
                     {
                         if (team.ID == match.RedTeam2ID)
                         {
-                @team.teamID
+                            @team.teamID
                         }
                     }
-            </td>
-            <td class="hidden-mobile">
-                @foreach (var team in Model.Teams)
+                </td>
+                <td class="hidden-mobile">
+                    @foreach (var team in Model.Teams)
                     {
                         if (team.ID == match.BlueTeam1ID)
                         {
-                @team.teamID
+                            @team.teamID
                         }
                     }
-            </td>
-            <td class="hidden-mobile">
-                @foreach (var team in Model.Teams)
+                </td>
+                <td class="hidden-mobile">
+                    @foreach (var team in Model.Teams)
                     {
                         if (team.ID == match.BlueTeam2ID)
                         {
-                @team.teamID
+                            @team.teamID
                         }
                     }
-            </td>
-            <td>
-                @Html.DisplayFor(matchList => match.RedScore)
-            </td>
-            <td>
-                @Html.DisplayFor(matchList => match.BlueScore)
-            </td>
-            <td class="hidden-mobile">
-                <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Edit</a> |
-                <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Delete</a>
-            </td>
-            <td class="hidden-tablet hidden-desktop">
-                <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID">Edit</a>
-            </td>
-        </tr>
+                </td>
+                <td>
+                    @Html.DisplayFor(matchList => match.RedScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(matchList => match.BlueScore)
+                </td>
+                <td class="hidden-mobile">
+                    <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID"><i class="fas fa-edit"></i></a>
+                    <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID"><i class="fas fa-trash"></i></a>
+                </td>
+                <td class="hidden-tablet hidden-desktop">
+                    <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-<strong>Orange-Incomplete team</strong>
 <a asp-page="Create" asp-route-eventID="@Model.eventID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match to schedule</a>
