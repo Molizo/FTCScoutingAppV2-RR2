@@ -1,10 +1,16 @@
 ﻿<html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui, maximum-scale=1.0, user-scalable=0" />
     <title>@ViewData["Title"] | FTC Live Scouting App</title>
+    <meta name="apple-mobile-web-app-title" content="FTC Scouting App" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" href="~/images/logo.png">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <!--Script for fixing Safari Web Clip opening links in new tab-->
+    <script>(function (a, b, c) { if (c in b && b[c]) { var d, e = a.location, f = /^(a|html)$/i; a.addEventListener("click", function (a) { d = a.target; while (!f.test(d.nodeName)) d = d.parentNode; "href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href) }, !1) } })(document, window.navigator, "standalone")</script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <environment include="Development">
@@ -27,11 +33,15 @@
         <a class="hidden-desktop hidden-tablet logo" href="https://mihneavisoiu.ro/" style="padding: 5px;">
             <img src="~/images/logo.png" height="42px" width="auto" />
         </a>
-        <a asp-page="/Index">Home</a>
+
         @{
             if (User.Identity.IsAuthenticated)
             {
-                <a asp-page="/Events/Index">Events</a>
+            <a asp-page="/Events/Index">Events</a>
+            }
+            else
+            {
+            <a asp-page="/Index">Home</a>
             }
         }
         <partial name="_LoginPartial" />

@@ -29,6 +29,11 @@
     }
 }
 
+body {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
 .container {
     padding-top: 60px;
     min-height: 100%;
