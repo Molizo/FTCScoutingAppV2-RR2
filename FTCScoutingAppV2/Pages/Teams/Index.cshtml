@@ -140,7 +140,7 @@
             <td class="hidden-mobile">
                 @Html.DisplayFor(modelItem => team.endLocation)
             </td>
-            <td width="75px">
+            <td width="85px">
                 <a asp-page="/Matches/Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-gamepad"></i></a>
                 <a asp-page="./Edit" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-edit"></i></a>
                 <a asp-page="./Delete" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-trash"></i></a>

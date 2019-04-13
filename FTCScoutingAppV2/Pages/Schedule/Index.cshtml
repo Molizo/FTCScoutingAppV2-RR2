@@ -106,12 +106,9 @@
                 <td>
                     @Html.DisplayFor(matchList => match.BlueScore)
                 </td>
-                <td class="hidden-mobile">
+                <td>
                     <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID"><i class="fas fa-edit"></i></a>
                     <a asp-page="./Delete" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID"><i class="fas fa-trash"></i></a>
-                </td>
-                <td class="hidden-tablet hidden-desktop">
-                    <a asp-page="./Edit" asp-route-eventID="@Model.eventID" asp-route-scheduledMatchID="@match.ID"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         }
