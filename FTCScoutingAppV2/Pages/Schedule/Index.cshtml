@@ -13,37 +13,48 @@
 <table class="table">
     <thead>
         <tr>
-            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+            <th class="hidden-mobile" style="        background-color: dimgray;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].matchNumber)
             </th>
-            <th class="hidden-tablet hidden-desktop" style="background-color:dimgray; color:white;">
+            <th class="hidden-tablet hidden-desktop" style="        background-color: dimgray;
+        color: white;">
                 Nr
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
+            <th class="hidden-mobile" style="        background-color: red;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedTeam1ID)
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
+            <th class="hidden-mobile" style="        background-color: red;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedTeam2ID)
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].BlueTeam1ID)
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].BlueTeam2ID)
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
+            <th class="hidden-mobile" style="        background-color: red;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].RedScore)
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 @Html.DisplayNameFor(match => match.MatchList[0].BlueScore)
             </th>
-            <th class="hidden-tablet hidden-desktop" style="background-color:red; color:white;">
+            <th class="hidden-tablet hidden-desktop" style="        background-color: red;
+        color: white;">
                 Red
             </th>
-            <th class="hidden-tablet hidden-desktop" style="background-color:blue; color:white;">
+            <th class="hidden-tablet hidden-desktop" style="        background-color: blue;
+        color: white;">
                 Blue
             </th>
-            <th style="background-color:dimgray; color:white;">
+            <th style="        background-color: dimgray;
+        color: white;">
                 Options
             </th>
         </tr>
@@ -54,7 +65,8 @@
             <tr>
                 @if (match.RedScore == 0 || match.BlueScore == 0 || match.RedTeam1ID.ToString() == "0" || match.RedTeam2ID.ToString() == "0" || match.BlueTeam1ID.ToString() == "0" || match.BlueTeam2ID.ToString() == "0")
                 {
-                    <td style="background-color:orange; color:white;">
+                    <td style="        background-color: orange;
+        color: white;">
                         @match.matchNumber
                     </td>
                 }
@@ -114,4 +126,10 @@
         }
     </tbody>
 </table>
-<a asp-page="Create" asp-route-eventID="@Model.eventID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match to schedule</a>
+<a asp-page="Create" asp-route-eventID="@Model.eventID" style="        color: dimgray;
+        border-radius: 100%;
+        background-color: white;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 50px;"><i class="fas fa-plus-circle"></i></a>

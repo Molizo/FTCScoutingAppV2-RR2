@@ -24,26 +24,33 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Event) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.eventName)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => item.eventLocation)
-            </td>
-            <td class="hidden-mobile">
-                <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a> |
-                <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a> |
-                <a asp-page="./Delete" asp-route-eventID="@item.ID">Delete</a>
-            </td>
-            <td class="hidden-tablet hidden-desktop">
-                <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a>
-                <br />
-                <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Event)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eventName)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => item.eventLocation)
+                </td>
+                <td class="hidden-mobile">
+                    <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a> |
+                    <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a> |
+                    <a asp-page="./Delete" asp-route-eventID="@item.ID">Delete</a>
+                </td>
+                <td class="hidden-tablet hidden-desktop">
+                    <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a>
+                    <br />
+                    <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-<a asp-page="Create" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add event</a>
+<a asp-page="Create" style="        color: dimgray;
+        border-radius: 100%;
+        background-color: white;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 50px;"><i class="fas fa-plus-circle"></i></a>

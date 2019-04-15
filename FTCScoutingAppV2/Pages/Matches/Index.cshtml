@@ -27,55 +27,70 @@
 <table class="table">
     <thead>
         <tr>
-            <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.NrSort">
+            <th style="        background-color: dimgray;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.NrSort">
                     Nr
                 </a>
             </th>
-            <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.TypeSort">
+            <th style="        background-color: dimgray;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.TypeSort">
                     Type
                 </a>
             </th>
-            <th style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.PointsSort">
+            <th style="        background-color: red;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" asp-route-sortOrder="@Model.PointsSort">
                     PTS
                 </a>
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Gold
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Silv
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Depot
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Cycl
             </th>
-            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+            <th class="hidden-mobile" style="        background-color: dimgray;
+        color: white;">
                 Start loc
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Lands
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Samp
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Dbl samp
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Team mrk
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Park
             </th>
-            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+            <th class="hidden-mobile" style="        background-color: dimgray;
+        color: white;">
                 End loc
             </th>
-            <th style="background-color:dimgray; color:white;">Options</th>
+            <th style="        background-color: dimgray;
+        color: white;">Options</th>
         </tr>
     </thead>
     <tbody>
@@ -84,13 +99,15 @@
             <tr>
                 @if (match.alliance == Models.Alliances.Red)
                 {
-                    <td style="background-color: red; color: white;">
+                    <td style="        background-color: red;
+        color: white;">
                         @Html.DisplayFor(modelItem => match.matchNumber)
                     </td>
                 }
                 else if (match.alliance == Models.Alliances.Blue)
                 {
-                    <td style="background-color: blue;color: white;">
+                    <td style="        background-color: blue;
+        color: white;">
                         @Html.DisplayFor(modelItem => match.matchNumber)
                     </td>
                 }
@@ -148,4 +165,10 @@
         }
     </tbody>
 </table>
-<a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add match</a>
+<a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@Model.teamRoutingID" style="        color: dimgray;
+        border-radius: 100%;
+        background-color: white;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 50px;"><i class="fas fa-plus-circle"></i></a>

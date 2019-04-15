@@ -18,135 +18,159 @@
 <table class="table">
     <thead>
         <tr>
-            <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.IDSort">
+            <th style="        background-color: dimgray;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.IDSort">
                     ID
                 </a>
             </th>
-            <th style="background-color:dimgray; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.NameSort">
+            <th style="        background-color: dimgray;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.NameSort">
                     Name
                 </a>
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.ExpPTSSort">
+            <th class="hidden-mobile" style="        background-color: red;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.ExpPTSSort">
                     Exp PTS
                 </a>
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.AvgPTSSort">
+            <th class="hidden-mobile" style="        background-color: red;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.AvgPTSSort">
                     Avg PTS
                 </a>
             </th>
-            <th class="hidden-mobile" style="background-color:red; color:white;">
-                <a style="color:white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.OPRSort">
+            <th class="hidden-mobile" style="        background-color: red;
+        color: white;">
+                <a style="        color: white;" asp-page="./Index" asp-route-eventID="@Model.eventRoutingID" asp-route-sortOrder="@Model.OPRSort">
                     OPR
                 </a>
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Gold
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Silv
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Depot
             </th>
-            <th class="hidden-mobile" style="background-color:forestgreen; color:white;">
+            <th class="hidden-mobile" style="        background-color: forestgreen;
+        color: white;">
                 Cycl
             </th>
-            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+            <th class="hidden-mobile" style="        background-color: dimgray;
+        color: white;">
                 Start loc
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Lands
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Samp
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Dbl samp
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Team mrk
             </th>
-            <th class="hidden-mobile" style="background-color:blue; color:white;">
+            <th class="hidden-mobile" style="        background-color: blue;
+        color: white;">
                 Park
             </th>
-            <th class="hidden-mobile" style="background-color:dimgray; color:white;">
+            <th class="hidden-mobile" style="        background-color: dimgray;
+        color: white;">
                 End loc
             </th>
-            <th style="background-color:dimgray; color:white;">Options</th>
+            <th style="        background-color: dimgray;
+        color: white;">Options</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var team in Model.Teams)
         {
-        <tr>
-            @if (team.startLocation.ToString() == String.Empty || team.endLocation.ToString() == String.Empty || team.ExpPTS == 0)
+            <tr>
+                @if (team.startLocation.ToString() == String.Empty || team.endLocation.ToString() == String.Empty || team.ExpPTS == 0)
                 {
-            <td style="background-color:orange; color:white;">
-                @Html.DisplayFor(modelItem => team.teamID)
-            </td>
+                    <td style="        background-color: orange;
+        color: white;">
+                        @Html.DisplayFor(modelItem => team.teamID)
+                    </td>
                 }
                 else
                 {
-            <td>
-                @Html.DisplayFor(modelItem => team.teamID)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => team.teamID)
+                    </td>
                 }
-            <td>
-                @Html.DisplayFor(modelItem => team.teamName)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.ExpPTS)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.AvgPTS)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.OPR)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.goldMinerals)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.silverMinerals)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.depotMinerals)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.cycles)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.startLocation)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.landing)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.sampling)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.doubleSampling)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.teamMarker)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.parking)
-            </td>
-            <td class="hidden-mobile">
-                @Html.DisplayFor(modelItem => team.endLocation)
-            </td>
-            <td width="85px">
-                <a asp-page="/Matches/Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-gamepad"></i></a>
-                <a asp-page="./Edit" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-edit"></i></a>
-                <a asp-page="./Delete" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => team.teamName)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.ExpPTS)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.AvgPTS)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.OPR)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.goldMinerals)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.silverMinerals)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.depotMinerals)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.cycles)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.startLocation)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.landing)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.sampling)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.doubleSampling)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.teamMarker)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.parking)
+                </td>
+                <td class="hidden-mobile">
+                    @Html.DisplayFor(modelItem => team.endLocation)
+                </td>
+                <td width="85px">
+                    <a asp-page="/Matches/Index" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-gamepad"></i></a>
+                    <a asp-page="./Edit" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-edit"></i></a>
+                    <a asp-page="./Delete" asp-route-eventID="@Model.eventRoutingID" asp-route-teamID="@team.ID"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-<a asp-page="Create" asp-route-id="@Model.eventRoutingID" class="btn large" style="background-color: dimgray; color: white; border-radius:0px; position:fixed; bottom:20px; right:20px; padding: 10px; font-size: 25px;">Add team</a>
+<a asp-page="Create" asp-route-id="@Model.eventRoutingID" style="        color: dimgray;
+        border-radius: 100%;
+        background-color: white;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 50px;"><i class="fas fa-plus-circle"></i></a>
