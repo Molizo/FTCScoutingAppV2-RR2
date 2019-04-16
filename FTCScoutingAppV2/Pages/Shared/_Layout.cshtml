@@ -37,11 +37,11 @@
         @{
             if (User.Identity.IsAuthenticated)
             {
-            <a asp-page="/Events/Index">Events</a>
+                <a asp-page="/Events/Index">Home</a>
             }
             else
             {
-            <a asp-page="/Index">Home</a>
+                <a asp-page="/Index">Home</a>
             }
         }
         <partial name="_LoginPartial" />

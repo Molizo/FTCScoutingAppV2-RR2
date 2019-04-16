@@ -99,18 +99,18 @@
     <tbody>
         @foreach (var team in Model.Teams)
         {
+            string toaLink = "https://theorangealliance.org/teams/" + team.teamID;
             <tr>
                 @if (team.startLocation.ToString() == String.Empty || team.endLocation.ToString() == String.Empty || team.ExpPTS == 0)
                 {
-                    <td style="        background-color: orange;
-        color: white;">
-                        @Html.DisplayFor(modelItem => team.teamID)
+                    <td style="        background-color: orange;">
+                        <a href="@toaLink" style="color:white;">@Html.DisplayFor(modelItem => team.teamID)</a>
                     </td>
                 }
                 else
                 {
                     <td>
-                        @Html.DisplayFor(modelItem => team.teamID)
+                        <a href="@toaLink" style="color:black;">@Html.DisplayFor(modelItem => team.teamID)</a>
                     </td>
                 }
                 <td>

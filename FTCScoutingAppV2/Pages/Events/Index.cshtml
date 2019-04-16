@@ -34,9 +34,9 @@
                     @Html.DisplayFor(modelItem => item.eventLocation)
                 </td>
                 <td class="hidden-mobile">
-                    <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a> |
-                    <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID">Schedule</a> |
-                    <a asp-page="./Delete" asp-route-eventID="@item.ID">Delete</a>
+                    <a asp-page="/Teams/Index" asp-route-eventID="@item.ID"><i class="fas fa-address-book"></i></a> 
+                    <a asp-page="/Schedule/Index" asp-route-eventID="@item.ID"><i class="fas fa-calendar-alt"></i></a> 
+                    <a asp-page="./Delete" asp-route-eventID="@item.ID"><i class="fas fa-trash"></i></a>
                 </td>
                 <td class="hidden-tablet hidden-desktop">
                     <a asp-page="/Teams/Index" asp-route-eventID="@item.ID">Teams</a>
