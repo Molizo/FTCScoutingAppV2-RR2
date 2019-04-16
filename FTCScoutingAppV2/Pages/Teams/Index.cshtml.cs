@@ -14,6 +14,7 @@ namespace FTCScoutingAppV2.Pages.Teams
 
         public static double EPS = 0.0000001d;
         public static int MAXN = 310;
+
         public IList<int> sum;
         public int[,] teams = new int[310, 310];
 
@@ -22,6 +23,8 @@ namespace FTCScoutingAppV2.Pages.Teams
         #region Private Fields
 
         private readonly FTCScoutingAppV2.Data.ApplicationDbContext _context;
+
+        private double[] X = new double[MAXN];
 
         #endregion Private Fields
 
@@ -58,20 +61,30 @@ namespace FTCScoutingAppV2.Pages.Teams
 
         #region Public Methods
 
+        public void AssignOPRScoresToTeams()
+        {
+            for (int i = 0; i < Teams.Count; i++)
+            {
+                Teams[i].OPR = X[i];
+            }
+        }
+
         public void ComputeOPR()
         {
             System.Diagnostics.Debug.WriteLine("Computing OPR");
             int n = 0, m = 0;
-            n = 2;
-            m = 4;
+            n = ScheduledMatches.Count * 2;
+            m = Teams.Count;
             int i = 0, j = 0, k;
 
-            int[,] v1 = new int[n + 10, m + 10];
-            int[,] v2 = new int[m + 10, n + 10];
-            int[,] v3 = new int[n + 10, n + 10];
-            int[] v4 = new int[n + 10];
+            int[,] v1 = new int[n + 1, m + 1];
+            int[,] v2 = new int[m + 1, n + 1];
+            int[,] v3 = new int[n + 1, n + 1];
+            int[] v4 = new int[n + 1];
             double[,] A = new double[MAXN, MAXN];
-            double[] X = new double[MAXN];
+
+            for (i = 0; i < n; i++)
+                sum[i] = sum[i];
 
             for (i = 0; i < n; i++)
                 for (j = 0; j < m; j++)
@@ -95,18 +108,20 @@ namespace FTCScoutingAppV2.Pages.Teams
                 for (j = 0; j < m; j++)
                 {
                     A[i + 1, j + 1] = v3[i, j];
+                    System.Diagnostics.Debug.WriteLine(v3[i, j]);
                 }
-
-                for (k = 0; k <= m; k++)
+                v4[i] = 0;
+                for (k = 0; k <= n - 1; k++)
                 {
                     v4[i] += v2[i, k] * sum[k];
                 }
                 A[i + 1, m + 1] = v4[i];
+                System.Diagnostics.Debug.WriteLine(v4[i]);
             }
 
             char ch = '1';
-            int N = m - 5;
-            int M = m - 5;
+            int N = m;
+            int M = m;
             i = 1;
             j = 1;
             double aux;
@@ -152,7 +167,7 @@ namespace FTCScoutingAppV2.Pages.Teams
                     {
                         if (j == M + 1)
                         {
-                            throw new Exception("Failed to compute OPR - Mathematical Error");
+                            System.Diagnostics.Debug.WriteLine("OPR error ocuured - Mathematical Error");
                         }
 
                         X[j] = A[i, M + 1];
@@ -295,7 +310,8 @@ namespace FTCScoutingAppV2.Pages.Teams
             if (IsOPRComputeable())
             {
                 PrepareOPRDataset();
-                //ComputeOPR();
+                ComputeOPR();
+                AssignOPRScoresToTeams();
             }
             ComputeSort(sortOrder);
         }

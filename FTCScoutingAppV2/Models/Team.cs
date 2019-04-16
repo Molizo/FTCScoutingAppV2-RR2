@@ -41,7 +41,7 @@ namespace FTCScoutingAppV2.Models
         public bool landing { get; set; }
 
         [Display(Name = "OPR points", ShortName = "OPR")]
-        public int OPR { get; set; }
+        public double OPR { get; set; }
 
         [Display(Name = "Robot parks", ShortName = "PRK")]
         public bool parking { get; set; }
