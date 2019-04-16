@@ -13,10 +13,10 @@ namespace FTCScoutingAppV2.Pages.Teams
         #region Public Fields
 
         public static double EPS = 0.0000001d;
-        public static int MAXN = 310;
+        public static int MAXN = 1000;
 
         public IList<int> sum;
-        public int[,] teams = new int[310, 310];
+        public int[,] teams = new int[1000, 1000];
 
         #endregion Public Fields
 
@@ -65,13 +65,13 @@ namespace FTCScoutingAppV2.Pages.Teams
         {
             for (int i = 0; i < Teams.Count; i++)
             {
-                Teams[i].OPR = X[i];
+                Teams[i].OPR = System.Math.Round(X[i], 2);
             }
         }
 
         public void ComputeOPR()
         {
-            System.Diagnostics.Debug.WriteLine("Computing OPR");
+            System.Diagnostics.Trace.TraceInformation("Computing OPR");
             int n = 0, m = 0;
             n = ScheduledMatches.Count * 2;
             m = Teams.Count;
@@ -83,6 +83,8 @@ namespace FTCScoutingAppV2.Pages.Teams
             int[] v4 = new int[n + 1];
             double[,] A = new double[MAXN, MAXN];
 
+            System.Diagnostics.Trace.TraceInformation(n + " " + m);
+
             for (i = 0; i < n; i++)
                 sum[i] = sum[i];
 
@@ -92,33 +94,34 @@ namespace FTCScoutingAppV2.Pages.Teams
                     v1[i, j] = teams[i, j];
                     v2[j, i] = v1[i, j];
                 }
-
-            for (i = 0; i < n; i++)
-                for (j = 0; j < n; j++)
+            // OK
+            for (i = 0; i < m; i++)
+                for (j = 0; j < m; j++)
                 {
                     v3[i, j] = 0;
-                    for (k = 0; k <= m; k++)
+                    for (k = 0; k <= n; k++)
                     {
+                        //System.Diagnostics.Debug.WriteLine("{0} {1} {2}", i, j, k);
                         v3[i, j] += v2[i, k] * v1[k, j];
                     }
                 }
-
+            //OK
             for (i = 0; i < m; i++)
             {
                 for (j = 0; j < m; j++)
                 {
                     A[i + 1, j + 1] = v3[i, j];
-                    System.Diagnostics.Debug.WriteLine(v3[i, j]);
+                    //System.Diagnostics.Trace.TraceInformation(v3[i, j].ToString());
                 }
                 v4[i] = 0;
-                for (k = 0; k <= n - 1; k++)
+                for (k = 0; k < n; k++)
                 {
                     v4[i] += v2[i, k] * sum[k];
                 }
                 A[i + 1, m + 1] = v4[i];
-                System.Diagnostics.Debug.WriteLine(v4[i]);
+                //System.Diagnostics.Trace.TraceInformation(v4[i].ToString());
             }
-
+            //NOT OK
             char ch = '1';
             int N = m;
             int M = m;
@@ -167,7 +170,7 @@ namespace FTCScoutingAppV2.Pages.Teams
                     {
                         if (j == M + 1)
                         {
-                            System.Diagnostics.Debug.WriteLine("OPR error ocuured - Mathematical Error");
+                            System.Diagnostics.Trace.TraceError("OPR error ocuured - Mathematical Error");
                         }
 
                         X[j] = A[i, M + 1];
@@ -177,12 +180,12 @@ namespace FTCScoutingAppV2.Pages.Teams
                         break;
                     }
 
-            for (i = 1; i <= M; ++i)
-            {
-                System.Diagnostics.Debug.WriteLine(ch + " " + X[i]);
-                ch++;
-            }
-            System.Diagnostics.Debug.WriteLine("Finished computing OPR");
+            //for (i = 1; i <= M; ++i)
+            //{
+            //    System.Diagnostics.Trace.TraceInformation(ch + " " + X[i]);
+            //    ch++;
+            //}
+            //System.Diagnostics.Trace.TraceInformation("Finished computing OPR");
         }
 
         public void ComputeSort(string sortOrder)
@@ -257,7 +260,7 @@ namespace FTCScoutingAppV2.Pages.Teams
             }
             if (teamsMatchCounter.Contains(1) || teamsMatchCounter.Contains(0))
             {
-                System.Diagnostics.Debug.WriteLine("OPR is not computable - Too few matches");
+                //System.Diagnostics.Trace.TraceWarning("OPR is not computable - Too few matches");
                 return false;
             }
             else
@@ -319,14 +322,14 @@ namespace FTCScoutingAppV2.Pages.Teams
         public void PrepareOPRDataset()
         {
             // {{Team red 1, Team red 2, Blue team 1, Blue Team 2, RedScore, BlueScore},... - > i = Match nr &  j = Team nr {{0, 0, 0, 1, ...},...}
-            System.Diagnostics.Debug.WriteLine("Preparing OPR dataset");
+            //System.Diagnostics.Trace.TraceInformation("Preparing OPR dataset");
             sum = new List<int>();
             foreach (var match in ScheduledMatches)
             {
                 sum.Add(Int32.Parse(match.RedScore.ToString()));
                 sum.Add(Int32.Parse(match.BlueScore.ToString()));
             }
-            System.Diagnostics.Debug.WriteLine("Added scores to sum");
+            System.Diagnostics.Trace.TraceInformation("Added scores to sum");
             for (int teamNr = 0; teamNr < Teams.Count; teamNr++)
             {
                 for (int matchNr = 0; matchNr < ScheduledMatches.Count * 2; matchNr += 2)
@@ -337,8 +340,8 @@ namespace FTCScoutingAppV2.Pages.Teams
                         teams[matchNr + 1, teamNr] = 1;
                     else
                         teams[matchNr, teamNr] = 0;
-                    System.Diagnostics.Debug.WriteLine(teams[matchNr, teamNr]);
-                    System.Diagnostics.Debug.WriteLine(teams[matchNr + 1, teamNr]);
+                    //System.Diagnostics.Trace.TraceInformation(teams[matchNr, teamNr].ToString());
+                    //System.Diagnostics.Trace.TraceInformation(teams[matchNr + 1, teamNr].ToString());
                 }
             }
         }
