@@ -65,13 +65,14 @@ namespace FTCScoutingAppV2.Pages.Teams
         {
             for (int i = 0; i < Teams.Count; i++)
             {
-                Teams[i].OPR = System.Math.Round(X[i], 2);
+                //System.Diagnostics.Trace.TraceInformation(Teams[i].teamID + " " + X[i + 1]);
+                Teams[i].OPR = System.Math.Round(X[i + 1], 2);
             }
         }
 
         public void ComputeOPR()
         {
-            System.Diagnostics.Trace.TraceInformation("Computing OPR");
+            //System.Diagnostics.Trace.TraceInformation("Computing OPR");
             int n = 0, m = 0;
             n = ScheduledMatches.Count * 2;
             m = Teams.Count;
@@ -94,7 +95,6 @@ namespace FTCScoutingAppV2.Pages.Teams
                     v1[i, j] = teams[i, j];
                     v2[j, i] = v1[i, j];
                 }
-            // OK
             for (i = 0; i < m; i++)
                 for (j = 0; j < m; j++)
                 {
@@ -105,7 +105,6 @@ namespace FTCScoutingAppV2.Pages.Teams
                         v3[i, j] += v2[i, k] * v1[k, j];
                     }
                 }
-            //OK
             for (i = 0; i < m; i++)
             {
                 for (j = 0; j < m; j++)
@@ -121,8 +120,6 @@ namespace FTCScoutingAppV2.Pages.Teams
                 A[i + 1, m + 1] = v4[i];
                 //System.Diagnostics.Trace.TraceInformation(v4[i].ToString());
             }
-            //NOT OK
-            char ch = '1';
             int N = m;
             int M = m;
             i = 1;
@@ -181,10 +178,7 @@ namespace FTCScoutingAppV2.Pages.Teams
                     }
 
             //for (i = 1; i <= M; ++i)
-            //{
-            //    System.Diagnostics.Trace.TraceInformation(ch + " " + X[i]);
-            //    ch++;
-            //}
+            //    System.Diagnostics.Trace.TraceInformation(Teams[i - 1].teamID + " " + X[i]);
             //System.Diagnostics.Trace.TraceInformation("Finished computing OPR");
         }
 
@@ -343,6 +337,7 @@ namespace FTCScoutingAppV2.Pages.Teams
                     //System.Diagnostics.Trace.TraceInformation(teams[matchNr, teamNr].ToString());
                     //System.Diagnostics.Trace.TraceInformation(teams[matchNr + 1, teamNr].ToString());
                 }
+                //System.Diagnostics.Trace.TraceInformation(Teams[teamNr].teamID);
             }
         }
 
