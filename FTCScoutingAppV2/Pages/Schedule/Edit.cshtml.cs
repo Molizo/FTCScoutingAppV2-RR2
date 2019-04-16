@@ -79,7 +79,7 @@ namespace FTCScoutingAppV2.Pages.Schedule
                 }
             }
 
-            return RedirectToPage("/Events/Index");
+            return RedirectToPage("./Index", new { eventID = HttpContext.Request.Query["eventID"], });
         }
 
         #endregion Public Methods

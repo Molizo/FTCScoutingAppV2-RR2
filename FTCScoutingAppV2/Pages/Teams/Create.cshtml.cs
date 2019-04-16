@@ -43,7 +43,7 @@ namespace FTCScoutingAppV2.Pages.Teams
             {
                 return Page();
             }
-            Team.eventID = HttpContext.Request.Query["id"];
+            Team.eventID = HttpContext.Request.Query["eventID"];
 
             UInt64 expPTS = 0;
             if (Team.landing == true)
@@ -70,7 +70,7 @@ namespace FTCScoutingAppV2.Pages.Teams
             _context.Team.Add(Team);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Events/Index");
+            return RedirectToPage("./Index", new { eventID = HttpContext.Request.Query["eventID"], });
         }
 
         #endregion Public Methods

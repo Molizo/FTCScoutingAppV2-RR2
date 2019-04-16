@@ -9,11 +9,11 @@
 <h2>Teams</h2>
 <p class="hidden-mobile">
     Teams for event @Model.eventName | @Html.DisplayFor(model => model.Teams.Count) teams |
-    <a asp-page="Create" asp-route-id="@Model.eventRoutingID">Add a team</a>
+    <a asp-page="Create" asp-route-eventID="@Model.eventRoutingID">Add a team</a>
 </p>
 <p class="hidden-tablet hidden-desktop">
     Event @Model.eventName |
-    <a asp-page="Create" asp-route-id="@Model.eventRoutingID">Add a team</a>
+    <a asp-page="Create" asp-route-eventID="@Model.eventRoutingID">Add a team</a>
 </p>
 <table class="table">
     <thead>
@@ -167,7 +167,7 @@
         }
     </tbody>
 </table>
-<a asp-page="Create" asp-route-id="@Model.eventRoutingID" style="        color: dimgray;
+<a asp-page="Create" asp-route-eventID="@Model.eventRoutingID" style="        color: dimgray;
         border-radius: 100%;
         background-color: white;
         position: fixed;

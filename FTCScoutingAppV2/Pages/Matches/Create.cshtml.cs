@@ -70,7 +70,7 @@ namespace FTCScoutingAppV2.Pages.Matches
             _context.Match.Add(Match);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("/Events/Index");
+            return RedirectToPage("./Index", new { eventID = HttpContext.Request.Query["eventID"], teamID = HttpContext.Request.Query["teamID"], });
         }
 
         #endregion Public Methods
